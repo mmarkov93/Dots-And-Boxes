@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BAA9AE23144B034D0029D4A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE22144B034D0029D4A6 /* UIKit.framework */; };
+		BAA9AE25144B034D0029D4A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE24144B034D0029D4A6 /* Foundation.framework */; };
+		BAA9AE27144B034D0029D4A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */; };
+		BAA9AE29144B034D0029D4A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE28144B034D0029D4A6 /* CoreData.framework */; };
+		BAA9AE2F144B034D0029D4A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE2D144B034D0029D4A6 /* InfoPlist.strings */; };
+		BAA9AE32144B034D0029D4A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE31144B034D0029D4A6 /* main.m */; };
+		BAA9AE35144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE34144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m */; };
+		BAA9AE38144B034E0029D4A6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE36144B034E0029D4A6 /* MainWindow.xib */; };
+		BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BAA9AE1E144B034D0029D4A6 /* Dots And Boxes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dots And Boxes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAA9AE22144B034D0029D4A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BAA9AE24144B034D0029D4A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BAA9AE28144B034D0029D4A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BAA9AE2C144B034D0029D4A6 /* Dots And Boxes-Info.plist */ = {isa = PBXFileReference; path = "Dots And Boxes-Info.plist"; sourceTree = "<group>"; };
+		BAA9AE2E144B034D0029D4A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BAA9AE30144B034D0029D4A6 /* Dots And Boxes-Prefix.pch */ = {isa = PBXFileReference; path = "Dots And Boxes-Prefix.pch"; sourceTree = "<group>"; };
+		BAA9AE31144B034D0029D4A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BAA9AE33144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.h */ = {isa = PBXFileReference; path = Dots_And_BoxesAppDelegate.h; sourceTree = "<group>"; };
+		BAA9AE34144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dots_And_BoxesAppDelegate.m; sourceTree = "<group>"; };
+		BAA9AE37144B034E0029D4A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		BAA9AE3A144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dots_And_Boxes.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BAA9AE1B144B034D0029D4A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAA9AE23144B034D0029D4A6 /* UIKit.framework in Frameworks */,
+				BAA9AE25144B034D0029D4A6 /* Foundation.framework in Frameworks */,
+				BAA9AE27144B034D0029D4A6 /* CoreGraphics.framework in Frameworks */,
+				BAA9AE29144B034D0029D4A6 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BAA9AE13144B034D0029D4A6 = {
+			isa = PBXGroup;
+			children = (
+				BAA9AE2A144B034D0029D4A6 /* Dots And Boxes */,
+				BAA9AE21144B034D0029D4A6 /* Frameworks */,
+				BAA9AE1F144B034D0029D4A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BAA9AE1F144B034D0029D4A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAA9AE1E144B034D0029D4A6 /* Dots And Boxes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAA9AE21144B034D0029D4A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAA9AE22144B034D0029D4A6 /* UIKit.framework */,
+				BAA9AE24144B034D0029D4A6 /* Foundation.framework */,
+				BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */,
+				BAA9AE28144B034D0029D4A6 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAA9AE2A144B034D0029D4A6 /* Dots And Boxes */ = {
+			isa = PBXGroup;
+			children = (
+				BAA9AE33144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.h */,
+				BAA9AE34144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m */,
+				BAA9AE36144B034E0029D4A6 /* MainWindow.xib */,
+				BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */,
+				BAA9AE2B144B034D0029D4A6 /* Supporting Files */,
+			);
+			path = "Dots And Boxes";
+			sourceTree = "<group>";
+		};
+		BAA9AE2B144B034D0029D4A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAA9AE2C144B034D0029D4A6 /* Dots And Boxes-Info.plist */,
+				BAA9AE2D144B034D0029D4A6 /* InfoPlist.strings */,
+				BAA9AE30144B034D0029D4A6 /* Dots And Boxes-Prefix.pch */,
+				BAA9AE31144B034D0029D4A6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BAA9AE1D144B034D0029D4A6 /* Dots And Boxes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAA9AE3E144B034E0029D4A6 /* Build configuration list for PBXNativeTarget "Dots And Boxes" */;
+			buildPhases = (
+				BAA9AE1A144B034D0029D4A6 /* Sources */,
+				BAA9AE1B144B034D0029D4A6 /* Frameworks */,
+				BAA9AE1C144B034D0029D4A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dots And Boxes";
+			productName = "Dots And Boxes";
+			productReference = BAA9AE1E144B034D0029D4A6 /* Dots And Boxes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAA9AE15144B034D0029D4A6 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = BAA9AE18144B034D0029D4A6 /* Build configuration list for PBXProject "Dots And Boxes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BAA9AE13144B034D0029D4A6;
+			productRefGroup = BAA9AE1F144B034D0029D4A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BAA9AE1D144B034D0029D4A6 /* Dots And Boxes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAA9AE1C144B034D0029D4A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAA9AE2F144B034D0029D4A6 /* InfoPlist.strings in Resources */,
+				BAA9AE38144B034E0029D4A6 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BAA9AE1A144B034D0029D4A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAA9AE32144B034D0029D4A6 /* main.m in Sources */,
+				BAA9AE35144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m in Sources */,
+				BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BAA9AE2D144B034D0029D4A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAA9AE2E144B034D0029D4A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BAA9AE36144B034E0029D4A6 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAA9AE37144B034E0029D4A6 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BAA9AE3C144B034E0029D4A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BAA9AE3D144B034E0029D4A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		BAA9AE3F144B034E0029D4A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dots And Boxes/Dots And Boxes-Prefix.pch";
+				INFOPLIST_FILE = "Dots And Boxes/Dots And Boxes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BAA9AE40144B034E0029D4A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dots And Boxes/Dots And Boxes-Prefix.pch";
+				INFOPLIST_FILE = "Dots And Boxes/Dots And Boxes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BAA9AE18144B034D0029D4A6 /* Build configuration list for PBXProject "Dots And Boxes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAA9AE3C144B034E0029D4A6 /* Debug */,
+				BAA9AE3D144B034E0029D4A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAA9AE3E144B034E0029D4A6 /* Build configuration list for PBXNativeTarget "Dots And Boxes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAA9AE3F144B034E0029D4A6 /* Debug */,
+				BAA9AE40144B034E0029D4A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BAA9AE3A144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodel */,
+			);
+			currentVersion = BAA9AE3A144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodel */;
+			path = Dots_And_Boxes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BAA9AE15144B034D0029D4A6 /* Project object */;
+}
