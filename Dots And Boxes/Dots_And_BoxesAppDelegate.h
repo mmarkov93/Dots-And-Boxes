@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface Dots_And_BoxesAppDelegate : NSObject <UIApplicationDelegate> {
-
+    UINavigationController *navController;
 }
 
+@property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;

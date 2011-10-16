@@ -16,6 +16,8 @@
 		BAA9AE35144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE34144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m */; };
 		BAA9AE38144B034E0029D4A6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE36144B034E0029D4A6 /* MainWindow.xib */; };
 		BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */; };
+		BAA9AE55144B0C3C0029D4A6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */; };
+		BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,14 +26,17 @@
 		BAA9AE24144B034D0029D4A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BAA9AE28144B034D0029D4A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		BAA9AE2C144B034D0029D4A6 /* Dots And Boxes-Info.plist */ = {isa = PBXFileReference; path = "Dots And Boxes-Info.plist"; sourceTree = "<group>"; };
+		BAA9AE2C144B034D0029D4A6 /* Dots And Boxes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dots And Boxes-Info.plist"; sourceTree = "<group>"; };
 		BAA9AE2E144B034D0029D4A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BAA9AE30144B034D0029D4A6 /* Dots And Boxes-Prefix.pch */ = {isa = PBXFileReference; path = "Dots And Boxes-Prefix.pch"; sourceTree = "<group>"; };
+		BAA9AE30144B034D0029D4A6 /* Dots And Boxes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dots And Boxes-Prefix.pch"; sourceTree = "<group>"; };
 		BAA9AE31144B034D0029D4A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BAA9AE33144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.h */ = {isa = PBXFileReference; path = Dots_And_BoxesAppDelegate.h; sourceTree = "<group>"; };
+		BAA9AE33144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dots_And_BoxesAppDelegate.h; sourceTree = "<group>"; };
 		BAA9AE34144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dots_And_BoxesAppDelegate.m; sourceTree = "<group>"; };
 		BAA9AE37144B034E0029D4A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		BAA9AE3A144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dots_And_Boxes.xcdatamodel; sourceTree = "<group>"; };
+		BAA9AE52144B0C3C0029D4A6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = "Dots And Boxes.xcodeproj/RootViewController.h"; sourceTree = SOURCE_ROOT; };
+		BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = "Dots And Boxes.xcodeproj/RootViewController.m"; sourceTree = SOURCE_ROOT; };
+		BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = "Dots And Boxes.xcodeproj/RootViewController.xib"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +57,7 @@
 		BAA9AE13144B034D0029D4A6 = {
 			isa = PBXGroup;
 			children = (
+				BAA9AE41144B03C60029D4A6 /* images */,
 				BAA9AE2A144B034D0029D4A6 /* Dots And Boxes */,
 				BAA9AE21144B034D0029D4A6 /* Frameworks */,
 				BAA9AE1F144B034D0029D4A6 /* Products */,
@@ -85,6 +91,9 @@
 				BAA9AE36144B034E0029D4A6 /* MainWindow.xib */,
 				BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */,
 				BAA9AE2B144B034D0029D4A6 /* Supporting Files */,
+				BAA9AE52144B0C3C0029D4A6 /* RootViewController.h */,
+				BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */,
+				BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */,
 			);
 			path = "Dots And Boxes";
 			sourceTree = "<group>";
@@ -98,6 +107,13 @@
 				BAA9AE31144B034D0029D4A6 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BAA9AE41144B03C60029D4A6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +165,7 @@
 			files = (
 				BAA9AE2F144B034D0029D4A6 /* InfoPlist.strings in Resources */,
 				BAA9AE38144B034E0029D4A6 /* MainWindow.xib in Resources */,
+				BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +179,7 @@
 				BAA9AE32144B034D0029D4A6 /* main.m in Sources */,
 				BAA9AE35144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m in Sources */,
 				BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */,
+				BAA9AE55144B0C3C0029D4A6 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +217,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -213,7 +231,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
@@ -229,6 +247,7 @@
 				GCC_PREFIX_HEADER = "Dots And Boxes/Dots And Boxes-Prefix.pch";
 				INFOPLIST_FILE = "Dots And Boxes/Dots And Boxes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -242,6 +261,7 @@
 				GCC_PREFIX_HEADER = "Dots And Boxes/Dots And Boxes-Prefix.pch";
 				INFOPLIST_FILE = "Dots And Boxes/Dots And Boxes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,6 +286,7 @@
 				BAA9AE40144B034E0029D4A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
