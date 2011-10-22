@@ -18,6 +18,12 @@
 		BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */; };
 		BAA9AE55144B0C3C0029D4A6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */; };
 		BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */; };
+		BADFECFE1452A0FC002AAF8F /* OnePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BADFECFC1452A0FC002AAF8F /* OnePlayerViewController.m */; };
+		BADFECFF1452A0FC002AAF8F /* OnePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADFECFD1452A0FC002AAF8F /* OnePlayerViewController.xib */; };
+		BADFED041452A357002AAF8F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BADFED021452A357002AAF8F /* GameViewController.m */; };
+		BADFED051452A357002AAF8F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADFED031452A357002AAF8F /* GameViewController.xib */; };
+		BADFED091452A49A002AAF8F /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BADFED071452A49A002AAF8F /* RulesViewController.m */; };
+		BADFED0A1452A49A002AAF8F /* RulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADFED081452A49A002AAF8F /* RulesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +43,15 @@
 		BAA9AE52144B0C3C0029D4A6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = "Dots And Boxes.xcodeproj/RootViewController.h"; sourceTree = SOURCE_ROOT; };
 		BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = "Dots And Boxes.xcodeproj/RootViewController.m"; sourceTree = SOURCE_ROOT; };
 		BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = "Dots And Boxes.xcodeproj/RootViewController.xib"; sourceTree = SOURCE_ROOT; };
+		BADFECFB1452A0FC002AAF8F /* OnePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnePlayerViewController.h; path = ../OnePlayerViewController.h; sourceTree = "<group>"; };
+		BADFECFC1452A0FC002AAF8F /* OnePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePlayerViewController.m; path = ../OnePlayerViewController.m; sourceTree = "<group>"; };
+		BADFECFD1452A0FC002AAF8F /* OnePlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnePlayerViewController.xib; path = ../OnePlayerViewController.xib; sourceTree = "<group>"; };
+		BADFED011452A357002AAF8F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		BADFED021452A357002AAF8F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		BADFED031452A357002AAF8F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		BADFED061452A499002AAF8F /* RulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesViewController.h; sourceTree = "<group>"; };
+		BADFED071452A49A002AAF8F /* RulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesViewController.m; sourceTree = "<group>"; };
+		BADFED081452A49A002AAF8F /* RulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RulesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +106,7 @@
 				BAA9AE36144B034E0029D4A6 /* MainWindow.xib */,
 				BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */,
 				BAA9AE2B144B034D0029D4A6 /* Supporting Files */,
-				BAA9AE52144B0C3C0029D4A6 /* RootViewController.h */,
-				BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */,
-				BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */,
+				BADFED0C1452AD36002AAF8F /* Controllers */,
 			);
 			path = "Dots And Boxes";
 			sourceTree = "<group>";
@@ -114,6 +127,25 @@
 			children = (
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		BADFED0C1452AD36002AAF8F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BAA9AE52144B0C3C0029D4A6 /* RootViewController.h */,
+				BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */,
+				BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */,
+				BADFECFB1452A0FC002AAF8F /* OnePlayerViewController.h */,
+				BADFECFC1452A0FC002AAF8F /* OnePlayerViewController.m */,
+				BADFECFD1452A0FC002AAF8F /* OnePlayerViewController.xib */,
+				BADFED011452A357002AAF8F /* GameViewController.h */,
+				BADFED021452A357002AAF8F /* GameViewController.m */,
+				BADFED031452A357002AAF8F /* GameViewController.xib */,
+				BADFED061452A499002AAF8F /* RulesViewController.h */,
+				BADFED071452A49A002AAF8F /* RulesViewController.m */,
+				BADFED081452A49A002AAF8F /* RulesViewController.xib */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +198,9 @@
 				BAA9AE2F144B034D0029D4A6 /* InfoPlist.strings in Resources */,
 				BAA9AE38144B034E0029D4A6 /* MainWindow.xib in Resources */,
 				BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */,
+				BADFECFF1452A0FC002AAF8F /* OnePlayerViewController.xib in Resources */,
+				BADFED051452A357002AAF8F /* GameViewController.xib in Resources */,
+				BADFED0A1452A49A002AAF8F /* RulesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +215,9 @@
 				BAA9AE35144B034D0029D4A6 /* Dots_And_BoxesAppDelegate.m in Sources */,
 				BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */,
 				BAA9AE55144B0C3C0029D4A6 /* RootViewController.m in Sources */,
+				BADFECFE1452A0FC002AAF8F /* OnePlayerViewController.m in Sources */,
+				BADFED041452A357002AAF8F /* GameViewController.m in Sources */,
+				BADFED091452A49A002AAF8F /* RulesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

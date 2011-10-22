@@ -1,39 +1,27 @@
 //
-//  RootViewController.m
+//  OnePlayerViewController.m
 //  Dots And Boxes
 //
-//  Created by Martin Markov on 10/16/11.
+//  Created by Martin Markov on 10/22/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "RootViewController.h"
 #import "OnePlayerViewController.h"
 #import "GameViewController.h"
-#import "RulesViewController.h"
 
 
-@implementation RootViewController
+@implementation OnePlayerViewController
 
--(IBAction)onePlayerButtonPressed {
-    OnePlayerViewController *onePlayerController = [[OnePlayerViewController alloc] initWithNibName:@"OnePlayerViewController" bundle:nil];
-    [self.navigationController pushViewController:onePlayerController animated:YES];
-    
-    [onePlayerController release];
+-(IBAction)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
--(IBAction)twoPlayerButtonPressed {
+-(IBAction)startButtonPressed {
     GameViewController *gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
     [self.navigationController pushViewController:gameController animated:YES];
     
     [gameController release];
     
-}
-
--(IBAction)rulesButtonPressed {
-    RulesViewController *rulesController = [[RulesViewController alloc] initWithNibName:@"RulesViewController" bundle:nil];
-    [self.navigationController pushViewController:rulesController animated:YES];
-    
-    [rulesController release];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -62,6 +50,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 

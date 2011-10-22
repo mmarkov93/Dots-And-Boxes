@@ -10,7 +10,11 @@
 
 
 @interface RootViewController : UIViewController {
-    
 }
+
+-(IBAction)onePlayerButtonPressed;
+-(IBAction)twoPlayerButtonPressed;
+-(IBAction)rulesButtonPressed;
+
 
 @end
