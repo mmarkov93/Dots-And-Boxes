@@ -69,6 +69,56 @@
     
 }
 
+-(void)createDots {
+    CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
+    CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
+    
+    UIImage *dotImage = [UIImage imageNamed:@"Dot.png"];
+    UIImage *lineImage = [UIImage imageNamed:@"Line.png"];
+
+    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
+    
+    int dotsCount = 6;
+    int dotSize = 15 - dotsCount;
+    
+    CGFloat lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
+    
+    for (int i = 0; i < dotsCount; i++) {
+        for (int j = 0; j < dotsCount; j++) {
+            if (i < (dotsCount - 1)) {
+                UIButton *horizButton= [UIButton buttonWithType:UIButtonTypeCustom];
+                [horizButton setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
+                horizButton.frame = CGRectMake(startPointX + i*lineLength + (i+1)*dotSize, 
+                                          startPointY + j*lineLength + j*dotSize, 
+                                          lineLength, dotSize);
+                [self.view addSubview:horizButton];
+            }
+            
+            if (j < (dotsCount - 1)) {
+                UIButton *horizButton= [UIButton buttonWithType:UIButtonTypeCustom];
+                [horizButton setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
+                horizButton.frame = CGRectMake(startPointX + i*lineLength + i*dotSize, 
+                                               startPointY + j*lineLength + (j+1)*dotSize, 
+                                               dotSize, lineLength);
+                [self.view addSubview:horizButton];
+            }
+            
+            UIImageView *dotView = [[UIImageView alloc] initWithImage:dotImage];
+            dotView.frame = CGRectMake(startPointX + i*lineLength + i*dotSize, 
+                                       startPointY + j*lineLength + j*dotSize, 
+                                       dotSize, dotSize);
+            [self.view addSubview:dotView];
+            [dotView release];
+        }
+        
+    }
+        
+    
+
+}
+
 -(IBAction)backButtonPressed {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -99,7 +149,8 @@
 
 - (void)viewDidLoad
 {
-    [self createButton];
+//    [self createButton];
+    [self createDots];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

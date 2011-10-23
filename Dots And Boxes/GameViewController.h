@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define fieldSize   280
+#define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
 
 @interface GameViewController : UIViewController {
     
