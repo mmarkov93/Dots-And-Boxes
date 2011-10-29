@@ -13,8 +13,14 @@
 @interface Game : NSObject {
     Player *player1;
     Player *player2;
+    int **horizontalLines;
+    int **verticalLines;
+    int **boxes;
 }
 
+@property int **horizontalLines;
+@property int **verticalLines;
+@property int **boxes;
 @property (nonatomic, retain) Player *player1;
 @property (nonatomic, retain) Player *player2;
 

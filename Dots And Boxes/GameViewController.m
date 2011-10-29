@@ -7,11 +7,25 @@
 //
 
 #import "GameViewController.h"
+#import "LineButton.h"
+#import "Game.h"
+#import "Coordinate.h"
 
 
 @implementation GameViewController
 
+@synthesize game;
+
 -(void)touchUpInside:(id)sender {
+    LineButton *currentButton = (LineButton*) sender;
+    currentButton.enabled = false;
+    if (currentButton.lineType == kVerticalLine) {
+        game.verticalLines[currentButton.row][currentButton.column] = 1;
+    } else {
+        game.horizontalLines[currentButton.row][currentButton.column] = 1;
+    } 
+    
+    NSLog(@"Row:%d  Column:%d", [currentButton row], [currentButton column]);
     NSLog(@"TouchUpInside :%@", [[sender titleLabel] text]);
 }
 
@@ -19,90 +33,81 @@
     NSLog(@"TouchUpOutside :%@", [[sender titleLabel] text]);
 }
 
--(void)touchCancel:(id)sender {
-    NSLog(@"TouchCancel :%@",[[sender titleLabel] text]);
-}
+
 
 -(void)touchDown:(id)sender {
+    UIButton *currentButton = (UIButton*) sender;
+    [currentButton setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"]forState:UIControlStateNormal];
     NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
 }
 
 -(void)dragInside:(id)sender {
+    UIButton *currentButton = (UIButton*) sender;
+    [currentButton setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"]forState:UIControlStateNormal];
     NSLog(@"DragInside :%@", [[sender titleLabel] text]);
 }
 
 -(void)dragOutside:(id)sender {
+    UIButton *currentButton = (UIButton*) sender;
+    [currentButton setBackgroundImage:nil forState:UIControlStateNormal];
     NSLog(@"DragOutside :%@", [[sender titleLabel] text]);
 }
 
--(void)dragExit:(id)sender {
-    NSLog(@"DragExit :%@", [[sender titleLabel] text]);
-}
-
--(void)dragEnter:(id)sender {
-    NSLog(@"DragEnter :%@", [[sender titleLabel] text]);
-}
-
-
--(void)createButton {
-    for (int i = 0; i < 2; i++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        button.titleLabel.text = [NSString stringWithFormat:@"button%d", i];
-        
-        [button setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
-        
-        [button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-        [button addTarget:self action:@selector(touchUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
-        [button addTarget:self action:@selector(touchCancel:) forControlEvents:UIControlEventTouchCancel];
-        [button addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
-        [button addTarget:self action:@selector(dragInside:) forControlEvents:UIControlEventTouchDragInside];
-        [button addTarget:self action:@selector(dragOutside:) forControlEvents:UIControlEventTouchDragOutside];
-        [button addTarget:self action:@selector(dragExit:) forControlEvents:UIControlEventTouchDragExit];
-        [button addTarget:self action:@selector(dragEnter:) forControlEvents:UIControlEventTouchDragEnter];
-        
-        button.frame = CGRectMake(100, 100 + i*10, 40, 5);
-        
-        
-        [self.view addSubview:button];
+-(void)addLineButtonWithFrame:(CGRect) rect coordinate:(Coordinate*) coordinate andType:(Lines) type {
+    int row = coordinate.row;
+    int column = coordinate.column;
+    
+    LineButton *button= [LineButton buttonWithType:UIButtonTypeCustom];
+    button.row = row;
+    button.column = column;
+    button.lineType = type;
+    
+    if (button.lineType == kHorizontalLine) {
+        [button setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"] forState:UIControlStateDisabled];
+    } else {
+        //add image for Vertical Line
+        [button setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"] forState:UIControlStateDisabled];
     }
     
+    
+    [button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
+    [button addTarget:self action:@selector(dragInside:) forControlEvents:UIControlEventTouchDragInside];
+    [button addTarget:self action:@selector(dragOutside:) forControlEvents:UIControlEventTouchDragOutside];
+    
+    button.frame = rect;
+    [self.view addSubview:button];
 }
 
--(void)createDots {
+-(void)createDotsAndLines:(int) dotsCount {
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
     UIImage *dotImage = [UIImage imageNamed:@"Dot.png"];
-    UIImage *lineImage = [UIImage imageNamed:@"Line.png"];
-
-    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
     
-    int dotsCount = 6;
+//    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
+    
     int dotSize = 15 - dotsCount;
     
     CGFloat lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
     
     for (int i = 0; i < dotsCount; i++) {
         for (int j = 0; j < dotsCount; j++) {
+            Coordinate *coordinate = [[Coordinate alloc] init];
+            coordinate.row = j;
+            coordinate.column = i;
             if (i < (dotsCount - 1)) {
-                UIButton *horizButton= [UIButton buttonWithType:UIButtonTypeCustom];
-                [horizButton setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
-                horizButton.frame = CGRectMake(startPointX + i*lineLength + (i+1)*dotSize, 
-                                          startPointY + j*lineLength + j*dotSize, 
-                                          lineLength, dotSize);
-                [self.view addSubview:horizButton];
+                CGRect horizontalButtonRect = CGRectMake(startPointX + i*lineLength + (i+1)*dotSize, 
+                                               startPointY + j*lineLength + j*dotSize, 
+                                               lineLength, dotSize);
+                [self addLineButtonWithFrame:horizontalButtonRect coordinate:coordinate andType:kHorizontalLine];
             }
             
             if (j < (dotsCount - 1)) {
-                UIButton *horizButton= [UIButton buttonWithType:UIButtonTypeCustom];
-                [horizButton setBackgroundImage:[UIImage imageNamed:@"Line.png"] forState:UIControlStateNormal];
-                horizButton.frame = CGRectMake(startPointX + i*lineLength + i*dotSize, 
-                                               startPointY + j*lineLength + (j+1)*dotSize, 
-                                               dotSize, lineLength);
-                [self.view addSubview:horizButton];
+                CGRect verticalButtonRect = CGRectMake(startPointX + i*lineLength + i*dotSize, 
+                                                startPointY + j*lineLength + (j+1)*dotSize, 
+                                                dotSize, lineLength);
+                [self addLineButtonWithFrame:verticalButtonRect coordinate:coordinate andType:kVerticalLine];
             }
             
             UIImageView *dotView = [[UIImageView alloc] initWithImage:dotImage];
@@ -110,13 +115,15 @@
                                        startPointY + j*lineLength + j*dotSize, 
                                        dotSize, dotSize);
             [self.view addSubview:dotView];
+            
+            [coordinate release];
             [dotView release];
         }
         
     }
-        
     
-
+    
+    
 }
 
 -(IBAction)backButtonPressed {
@@ -149,8 +156,9 @@
 
 - (void)viewDidLoad
 {
-//    [self createButton];
-    [self createDots];
+    //    [self createButton];
+    game = [[Game alloc] init];
+    [self createDotsAndLines:6];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

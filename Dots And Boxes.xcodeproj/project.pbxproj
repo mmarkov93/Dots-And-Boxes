@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA1C18311452CB200045BA23 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1C18301452CB200045BA23 /* Line.png */; };
+		BA1C18311452CB200045BA23 /* HorizontLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1C18301452CB200045BA23 /* HorizontLine.png */; };
 		BAA9AE23144B034D0029D4A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE22144B034D0029D4A6 /* UIKit.framework */; };
 		BAA9AE25144B034D0029D4A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE24144B034D0029D4A6 /* Foundation.framework */; };
 		BAA9AE27144B034D0029D4A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */; };
@@ -20,6 +20,8 @@
 		BAA9AE55144B0C3C0029D4A6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */; };
 		BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */; };
 		BAC1B2FD145432640085E9C1 /* Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC1B2FC145432640085E9C1 /* Dot.png */; };
+		BAC209C6145C414400C3DC7F /* LineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC209C5145C414400C3DC7F /* LineButton.m */; };
+		BAC209CA145C50AB00C3DC7F /* Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC209C9145C50AB00C3DC7F /* Coordinate.m */; };
 		BAD48F931454051500931695 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F921454051500931695 /* Player.m */; };
 		BAD48F961454055400931695 /* ComputerEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F951454055400931695 /* ComputerEasy.m */; };
 		BAD48F99145405D200931695 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F98145405D200931695 /* Game.m */; };
@@ -32,7 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA1C18301452CB200045BA23 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
+		BA1C18301452CB200045BA23 /* HorizontLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HorizontLine.png; sourceTree = "<group>"; };
 		BAA9AE1E144B034D0029D4A6 /* Dots And Boxes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dots And Boxes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA9AE22144B034D0029D4A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BAA9AE24144B034D0029D4A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,6 +52,10 @@
 		BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = "Dots And Boxes.xcodeproj/RootViewController.m"; sourceTree = SOURCE_ROOT; };
 		BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = "Dots And Boxes.xcodeproj/RootViewController.xib"; sourceTree = SOURCE_ROOT; };
 		BAC1B2FC145432640085E9C1 /* Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dot.png; sourceTree = "<group>"; };
+		BAC209C4145C414400C3DC7F /* LineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineButton.h; sourceTree = "<group>"; };
+		BAC209C5145C414400C3DC7F /* LineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineButton.m; sourceTree = "<group>"; };
+		BAC209C8145C50AB00C3DC7F /* Coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinate.h; sourceTree = "<group>"; };
+		BAC209C9145C50AB00C3DC7F /* Coordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coordinate.m; sourceTree = "<group>"; };
 		BAD48F911454051500931695 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		BAD48F921454051500931695 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		BAD48F941454055400931695 /* ComputerEasy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerEasy.h; sourceTree = "<group>"; };
@@ -139,7 +145,7 @@
 		BAA9AE41144B03C60029D4A6 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				BA1C18301452CB200045BA23 /* Line.png */,
+				BA1C18301452CB200045BA23 /* HorizontLine.png */,
 				BAC1B2FC145432640085E9C1 /* Dot.png */,
 			);
 			name = images;
@@ -154,6 +160,10 @@
 				BAD48F951454055400931695 /* ComputerEasy.m */,
 				BAD48F97145405D200931695 /* Game.h */,
 				BAD48F98145405D200931695 /* Game.m */,
+				BAC209C4145C414400C3DC7F /* LineButton.h */,
+				BAC209C5145C414400C3DC7F /* LineButton.m */,
+				BAC209C8145C50AB00C3DC7F /* Coordinate.h */,
+				BAC209C9145C50AB00C3DC7F /* Coordinate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -230,7 +240,7 @@
 				BADFECFF1452A0FC002AAF8F /* OnePlayerViewController.xib in Resources */,
 				BADFED051452A357002AAF8F /* GameViewController.xib in Resources */,
 				BADFED0A1452A49A002AAF8F /* RulesViewController.xib in Resources */,
-				BA1C18311452CB200045BA23 /* Line.png in Resources */,
+				BA1C18311452CB200045BA23 /* HorizontLine.png in Resources */,
 				BAC1B2FD145432640085E9C1 /* Dot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +262,8 @@
 				BAD48F931454051500931695 /* Player.m in Sources */,
 				BAD48F961454055400931695 /* ComputerEasy.m in Sources */,
 				BAD48F99145405D200931695 /* Game.m in Sources */,
+				BAC209C6145C414400C3DC7F /* LineButton.m in Sources */,
+				BAC209CA145C50AB00C3DC7F /* Coordinate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

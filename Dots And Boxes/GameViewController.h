@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
 
 #define fieldSize   280
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
 
 @interface GameViewController : UIViewController {
-    
+    Game *game;
 }
+
+@property (nonatomic, retain) Game *game;
 
 -(IBAction)backButtonPressed;
 
