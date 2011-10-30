@@ -87,7 +87,7 @@
     } else if (objectType == kVerticalLine) {
         NSLog(@"VerverticalLines");
         //check for box left of the line
-        if (horizontalLines[row][column-1] == 1 & horizontalLines[row+1][column-1] == 1 & verticalLines [row][column-1]) {
+        if (horizontalLines[row][column-1] == 1 & horizontalLines[row+1][column-1] == 1 & verticalLines [row][column-1] == 1) {
             boxes[row][column-1] = 1;
             Coordinate *box3Coordinate = [[Coordinate alloc] init];
             box3Coordinate.row = row;
@@ -100,7 +100,7 @@
         }
         //check for box right of the line
         if (column < dotsCount - 1) {
-            if (horizontalLines[row][column] == 1 & horizontalLines[row+1][column] == 1 & verticalLines [row][column+1]) {
+            if (horizontalLines[row][column] == 1 & horizontalLines[row+1][column] == 1 & verticalLines [row][column+1] == 1) {
                 boxes[row][column] = 1;
                 Coordinate *box4Coordinate = [[Coordinate alloc] init];
                 box4Coordinate.row = row;
