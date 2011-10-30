@@ -11,7 +11,6 @@
 
 @implementation LineButton
 
-@synthesize row, column;
-@synthesize lineType;
+@synthesize coordinate;
 
 @end

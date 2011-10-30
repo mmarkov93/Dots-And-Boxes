@@ -14,9 +14,13 @@
 
 @interface GameViewController : UIViewController {
     Game *game;
+    int lineLength;
+    int dotSize;
 }
 
 @property (nonatomic, retain) Game *game;
+@property int lineLength;
+@property int dotSize;
 
 -(IBAction)backButtonPressed;
 

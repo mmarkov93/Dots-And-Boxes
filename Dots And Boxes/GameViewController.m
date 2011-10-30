@@ -15,18 +15,43 @@
 @implementation GameViewController
 
 @synthesize game;
+@synthesize lineLength, dotSize;
+
+-(void)drawSqaresWithCoordinates:(NSArray*) coordinates {
+    UIImage *sqareImage = [UIImage imageNamed:@"BlueSquare.png"];
+    CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
+    CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
+    
+    for (Coordinate *coordinate in coordinates) {
+        int row = coordinate.row;
+        int column = coordinate. column;
+        
+        UIImageView *sqareImageView1 = [[UIImageView alloc] initWithImage:sqareImage];
+        sqareImageView1.frame = CGRectMake(startPointX + column*lineLength + (column+1)*dotSize, 
+                                           startPointY + row*lineLength + (row+1)*dotSize, 
+                                           lineLength, lineLength);
+        [self.view addSubview:sqareImageView1];
+        [sqareImageView1 release];
+    }
+    
+}
 
 -(void)touchUpInside:(id)sender {
     LineButton *currentButton = (LineButton*) sender;
     currentButton.enabled = false;
-    if (currentButton.lineType == kVerticalLine) {
-        game.verticalLines[currentButton.row][currentButton.column] = 1;
+    Coordinate *coordinate = [currentButton coordinate];
+    if (coordinate.objectType == kVerticalLine) {
+        game.verticalLines[coordinate.row][coordinate.column] = 1;
     } else {
-        game.horizontalLines[currentButton.row][currentButton.column] = 1;
-    } 
+        game.horizontalLines[coordinate.row][coordinate.column] = 1;
+    }
     
-    NSLog(@"Row:%d  Column:%d", [currentButton row], [currentButton column]);
-    NSLog(@"TouchUpInside :%@", [[sender titleLabel] text]);
+    [self drawSqaresWithCoordinates:[game checkForBoxes:coordinate]];
+    
+    
+    
+//    NSLog(@"Row:%d  Column:%d", [coordinate row], [coordinate column]);
+    //    NSLog(@"TouchUpInside :%@", [[sender titleLabel] text]);
 }
 
 -(void)touchUpOutside:(id)sender {
@@ -38,7 +63,7 @@
 -(void)touchDown:(id)sender {
     UIButton *currentButton = (UIButton*) sender;
     [currentButton setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"]forState:UIControlStateNormal];
-    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
+//    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
 }
 
 -(void)dragInside:(id)sender {
@@ -53,16 +78,12 @@
     NSLog(@"DragOutside :%@", [[sender titleLabel] text]);
 }
 
--(void)addLineButtonWithFrame:(CGRect) rect coordinate:(Coordinate*) coordinate andType:(Lines) type {
-    int row = coordinate.row;
-    int column = coordinate.column;
+-(void)addLineButtonWithFrame:(CGRect) rect coordinate:(Coordinate*) coordinate {
     
     LineButton *button= [LineButton buttonWithType:UIButtonTypeCustom];
-    button.row = row;
-    button.column = column;
-    button.lineType = type;
+    button.coordinate = coordinate;
     
-    if (button.lineType == kHorizontalLine) {
+    if (coordinate.objectType == kHorizontalLine) {
         [button setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"] forState:UIControlStateDisabled];
     } else {
         //add image for Vertical Line
@@ -79,55 +100,61 @@
     [self.view addSubview:button];
 }
 
--(void)createDotsAndLines:(int) dotsCount {
+-(void)createDotsAndLines {    
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
     UIImage *dotImage = [UIImage imageNamed:@"Dot.png"];
     
-//    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
+    //    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
     
-    int dotSize = 15 - dotsCount;
-    
-    CGFloat lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
+    int dotsCount = [game dotsCount];
     
     for (int i = 0; i < dotsCount; i++) {
         for (int j = 0; j < dotsCount; j++) {
-            Coordinate *coordinate = [[Coordinate alloc] init];
-            coordinate.row = j;
-            coordinate.column = i;
+            
             if (i < (dotsCount - 1)) {
+                Coordinate *horizontalCoordinate = [[Coordinate alloc] init];
+                horizontalCoordinate.row = j;
+                horizontalCoordinate.column = i;
+                horizontalCoordinate.objectType = kHorizontalLine;
                 CGRect horizontalButtonRect = CGRectMake(startPointX + i*lineLength + (i+1)*dotSize, 
-                                               startPointY + j*lineLength + j*dotSize, 
-                                               lineLength, dotSize);
-                [self addLineButtonWithFrame:horizontalButtonRect coordinate:coordinate andType:kHorizontalLine];
+                                                         startPointY + j*lineLength + j*dotSize, 
+                                                         lineLength, dotSize);
+                [self addLineButtonWithFrame:horizontalButtonRect coordinate:horizontalCoordinate];
+                [horizontalCoordinate release];
             }
             
             if (j < (dotsCount - 1)) {
+                Coordinate *verticalCoordinate = [[Coordinate alloc] init];
+                verticalCoordinate.row = j;
+                verticalCoordinate.column = i;
+                verticalCoordinate.objectType = kVerticalLine;
                 CGRect verticalButtonRect = CGRectMake(startPointX + i*lineLength + i*dotSize, 
-                                                startPointY + j*lineLength + (j+1)*dotSize, 
-                                                dotSize, lineLength);
-                [self addLineButtonWithFrame:verticalButtonRect coordinate:coordinate andType:kVerticalLine];
+                                                       startPointY + j*lineLength + (j+1)*dotSize, 
+                                                       dotSize, lineLength);
+                [self addLineButtonWithFrame:verticalButtonRect coordinate:verticalCoordinate];
+                [verticalCoordinate release];
             }
             
             UIImageView *dotView = [[UIImageView alloc] initWithImage:dotImage];
             dotView.frame = CGRectMake(startPointX + i*lineLength + i*dotSize, 
                                        startPointY + j*lineLength + j*dotSize, 
                                        dotSize, dotSize);
+            if (i == 0 & j == 0) {
+                NSLog(@"Point x:%f y:%f", dotView.frame.origin.x, dotView.frame.origin.y);
+            }
+            
             [self.view addSubview:dotView];
             
-            [coordinate release];
             [dotView release];
         }
         
     }
-    
-    
-    
 }
 
 -(IBAction)backButtonPressed {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -158,7 +185,10 @@
 {
     //    [self createButton];
     game = [[Game alloc] init];
-    [self createDotsAndLines:6];
+    int dotsCount = [game dotsCount];
+    dotSize = 15 - dotsCount;
+    lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
+    [self createDotsAndLines];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

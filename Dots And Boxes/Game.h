@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Player.h"
+#import "Coordinate.h"
 
 
 @interface Game : NSObject {
@@ -16,6 +17,7 @@
     int **horizontalLines;
     int **verticalLines;
     int **boxes;
+    int dotsCount;
 }
 
 @property int **horizontalLines;
@@ -23,6 +25,8 @@
 @property int **boxes;
 @property (nonatomic, retain) Player *player1;
 @property (nonatomic, retain) Player *player2;
+@property int dotsCount;
 
+-(NSArray*)checkForBoxes:(Coordinate*) coordinate;
 
 @end

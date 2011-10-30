@@ -7,20 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Coordinate.h"
 
-typedef enum  Lines{
-    kHorizontalLine,
-    kVerticalLine
-}Lines;
 
 @interface LineButton : UIButton {
-    int row;
-    int column;
-    Lines lineType;
+    Coordinate *coordinate;
 }
 
-@property int row;
-@property int column;
-@property Lines lineType;
-
+@property (nonatomic, retain) Coordinate *coordinate;
 @end

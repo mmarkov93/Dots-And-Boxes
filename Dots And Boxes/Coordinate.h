@@ -8,13 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum  ObjectType{
+    kHorizontalLine,
+    kVerticalLine,
+    kBox
+}ObjectType;
 
 @interface Coordinate : NSObject {
     int row;
     int column;
+    ObjectType lineType;
 }
 
 @property int row;
 @property int column;
+@property ObjectType objectType;
 
 @end

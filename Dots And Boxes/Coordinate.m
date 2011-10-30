@@ -11,6 +11,6 @@
 
 @implementation Coordinate
 
-@synthesize row, column;
+@synthesize row, column, objectType;
 
 @end
