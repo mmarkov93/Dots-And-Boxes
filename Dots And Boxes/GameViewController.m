@@ -18,7 +18,7 @@
 @synthesize lineLength, dotSize;
 
 -(void)drawSqaresWithCoordinates:(NSArray*) coordinates {
-    UIImage *sqareImage = [UIImage imageNamed:@"BlueSquare.png"];
+    //UIImage *sqareImage = [UIImage imageNamed:@"BlueSquare.png"];
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
@@ -26,7 +26,7 @@
         int row = coordinate.row;
         int column = coordinate. column;
         
-        UIImageView *sqareImageView1 = [[UIImageView alloc] initWithImage:sqareImage];
+        UIImageView *sqareImageView1 = [[UIImageView alloc] initWithImage:[game.currentPlayer getPlayerBoxImage]];
         sqareImageView1.frame = CGRectMake(startPointX + column*lineLength + (column+1)*dotSize, 
                                            startPointY + row*lineLength + (row+1)*dotSize, 
                                            lineLength, lineLength);
@@ -38,6 +38,7 @@
 
 -(void)touchUpInside:(id)sender {
     LineButton *currentButton = (LineButton*) sender;
+    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
     currentButton.enabled = false;
     Coordinate *coordinate = [currentButton coordinate];
     if (coordinate.objectType == kVerticalLine) {
@@ -46,7 +47,14 @@
         game.horizontalLines[coordinate.row][coordinate.column] = 1;
     }
     
-    [self drawSqaresWithCoordinates:[game checkForBoxes:coordinate]];
+    
+    NSArray *numOfBoxes = [game checkForBoxes:coordinate];
+    if ([numOfBoxes count] > 0) {
+        [self drawSqaresWithCoordinates:numOfBoxes];
+    } else {
+        [game changeCurrentPlayer];
+    }
+//    [self drawSqaresWithCoordinates:[game checkForBoxes:coordinate]];
     
     
     
@@ -62,7 +70,7 @@
 
 -(void)touchDown:(id)sender {
     UIButton *currentButton = (UIButton*) sender;
-    [currentButton setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"]forState:UIControlStateNormal];
+    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage]forState:UIControlStateNormal];
 //    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
 }
 
@@ -84,10 +92,10 @@
     button.coordinate = coordinate;
     
     if (coordinate.objectType == kHorizontalLine) {
-        [button setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"] forState:UIControlStateDisabled];
+        [button setBackgroundImage:[UIImage imageNamed:@"blueHorizontLine.png"] forState:UIControlStateDisabled];
     } else {
         //add image for Vertical Line
-        [button setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"] forState:UIControlStateDisabled];
+        [button setBackgroundImage:[UIImage imageNamed:@"blueHorizontLine.png"] forState:UIControlStateDisabled];
     }
     
     
@@ -114,10 +122,7 @@
         for (int j = 0; j < dotsCount; j++) {
             
             if (i < (dotsCount - 1)) {
-                Coordinate *horizontalCoordinate = [[Coordinate alloc] init];
-                horizontalCoordinate.row = j;
-                horizontalCoordinate.column = i;
-                horizontalCoordinate.objectType = kHorizontalLine;
+                Coordinate *horizontalCoordinate = [[Coordinate alloc] initWithRow:j Column:i AndObjectType:kHorizontalLine];
                 CGRect horizontalButtonRect = CGRectMake(startPointX + i*lineLength + (i+1)*dotSize, 
                                                          startPointY + j*lineLength + j*dotSize, 
                                                          lineLength, dotSize);
@@ -126,10 +131,7 @@
             }
             
             if (j < (dotsCount - 1)) {
-                Coordinate *verticalCoordinate = [[Coordinate alloc] init];
-                verticalCoordinate.row = j;
-                verticalCoordinate.column = i;
-                verticalCoordinate.objectType = kVerticalLine;
+                Coordinate *verticalCoordinate = [[Coordinate alloc] initWithRow:j Column:i AndObjectType:kVerticalLine];
                 CGRect verticalButtonRect = CGRectMake(startPointX + i*lineLength + i*dotSize, 
                                                        startPointY + j*lineLength + (j+1)*dotSize, 
                                                        dotSize, lineLength);
@@ -189,6 +191,16 @@
     dotSize = 15 - dotsCount;
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
     [self createDotsAndLines];
+ 
+    Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
+    Player *player2 = [[Player alloc] initWithColor:@"red" Name:@"Player2"];    
+    
+    game.player1 = player1;
+    game.player2 = player2;
+    game.currentPlayer = player1;
+    [player1 release];
+    [player2 release];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

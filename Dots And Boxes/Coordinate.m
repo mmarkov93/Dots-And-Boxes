@@ -13,4 +13,14 @@
 
 @synthesize row, column, objectType;
 
+-(id)initWithRow:(int)inRow Column:(int)inColumn AndObjectType:(ObjectType)inType {
+    self = [super init];
+    if (self) {
+        row = inRow;
+        column = inColumn;
+        objectType = inType;
+    }
+    return (self);
+}
+
 @end

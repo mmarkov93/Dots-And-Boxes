@@ -17,11 +17,13 @@ typedef enum  ObjectType{
 @interface Coordinate : NSObject {
     int row;
     int column;
-    ObjectType lineType;
+    ObjectType objectType;
 }
 
 @property int row;
 @property int column;
 @property ObjectType objectType;
+
+-(id)initWithRow:(int) row Column:(int) column AndObjectType:(ObjectType) type;
 
 @end

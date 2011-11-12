@@ -11,4 +11,29 @@
 
 @implementation Player
 
+@synthesize color;
+@synthesize name;
+@synthesize boxes;
+
+-(id)initWithColor:(NSString *)inColor Name:(NSString *)inName {
+    self = [super init];
+    if (self) {
+        color = inColor;
+        name = inName;
+    }
+    return (self);
+}
+
+-(UIImage*)getPlayerHorizontalLineImage {
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@HorizontalLine.png", color]];
+}
+
+-(UIImage*)getPlayerBoxImage {
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@Box.png", color]];
+}
+
+-(UIImage*)getPlayerVerticalLineImage {
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@HorizontalLine.png", color]];
+}
+
 @end

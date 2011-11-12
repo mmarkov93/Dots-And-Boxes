@@ -10,7 +10,19 @@
 
 
 @interface Player : NSObject {
-    
+    NSString *color;
+    NSString *name;
+    int boxes;
 }
+
+@property (nonatomic, retain) NSString *color;
+@property (nonatomic, retain) NSString *name;
+@property int boxes;
+
+-(UIImage*)getPlayerHorizontalLineImage;
+-(UIImage*)getPlayerVerticalLineImage;
+-(UIImage*)getPlayerBoxImage;
+
+-(id)initWithColor:(NSString*) inColor Name:(NSString*) inName;
 
 @end

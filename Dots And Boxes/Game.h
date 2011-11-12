@@ -14,6 +14,7 @@
 @interface Game : NSObject {
     Player *player1;
     Player *player2;
+    Player *currentPlayer;
     int **horizontalLines;
     int **verticalLines;
     int **boxes;
@@ -25,8 +26,10 @@
 @property int **boxes;
 @property (nonatomic, retain) Player *player1;
 @property (nonatomic, retain) Player *player2;
+@property (nonatomic, retain) Player *currentPlayer;
 @property int dotsCount;
 
 -(NSArray*)checkForBoxes:(Coordinate*) coordinate;
+-(void)changeCurrentPlayer;
 
 @end

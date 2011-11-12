@@ -11,14 +11,14 @@
 
 
 @implementation Game
-@synthesize player1;
-@synthesize player2;
+@synthesize player1, player2, currentPlayer;
 @synthesize horizontalLines, verticalLines, boxes;
 @synthesize dotsCount;
 
 - (id) init {
     self = [super init];
     if (self != nil) {
+        currentPlayer = player1;
         dotsCount = 8;
         horizontalLines = (int **) malloc(dotsCount*sizeof(int));
         verticalLines = (int **) malloc(dotsCount*sizeof(int));
@@ -47,6 +47,35 @@
     return self;
 }
 
+-(bool)checkForBoxAboveTheLine:(Coordinate*)line {
+    int row = line.row;
+    int column = line.column;
+    
+    return (verticalLines[row-1][column] == 1 & verticalLines[row-1][column+1] == 1 & horizontalLines [row-1][column] == 1);
+}
+
+-(bool)checkForBoxUnderTheLine:(Coordinate*)line {
+    int row = line.row;
+    int column = line.column;
+    
+    return (verticalLines[row][column] == 1 & verticalLines[row][column+1] == 1 & horizontalLines [row+1][column] == 1);
+}
+
+-(bool)checkForBoxLeftOFTheLine:(Coordinate*)line {
+    int row = line.row;
+    int column = line.column;
+    
+    return (horizontalLines[row][column-1] == 1 & horizontalLines[row+1][column-1] == 1 & verticalLines [row][column-1] == 1);
+}
+
+-(bool)checkForBoxRightOFTheLine:(Coordinate*)line {
+    int row = line.row;
+    int column = line.column;
+    
+    return (horizontalLines[row][column-1] == 1 & horizontalLines[row+1][column-1] == 1 & verticalLines [row][column-1] == 1);
+}
+
+
 -(NSArray*)checkForBoxes:(Coordinate *)coordinate {
     int row = coordinate.row;
     int column = coordinate.column;
@@ -59,10 +88,7 @@
         if (row > 0) {
             if (verticalLines[row-1][column] == 1 & verticalLines[row-1][column+1] == 1 & horizontalLines [row-1][column] == 1) {
                 boxes[row-1][column] = 1;
-                Coordinate *box1Coordinate = [[Coordinate alloc] init];
-                box1Coordinate.row = row-1;
-                box1Coordinate.column = column;
-                box1Coordinate.objectType = kBox;
+                Coordinate *box1Coordinate = [[Coordinate alloc] initWithRow:(row-1) Column:column AndObjectType:kBox];
                 [boxesArray addObject:box1Coordinate];
                 
                 [box1Coordinate release];
@@ -73,10 +99,7 @@
         if(column < dotsCount -1 & row < dotsCount-1) {
             if (verticalLines[row][column] == 1 & verticalLines[row][column+1] == 1 & horizontalLines [row+1][column] == 1) {
                 boxes[row][column] = 1;
-                Coordinate *box2Coordinate = [[Coordinate alloc] init];
-                box2Coordinate.row = row;
-                box2Coordinate.column = column;
-                box2Coordinate.objectType = kBox;
+                Coordinate *box2Coordinate = [[Coordinate alloc] initWithRow:row Column:column AndObjectType:kBox];
                 [boxesArray addObject:box2Coordinate];
                 
                 [box2Coordinate release];
@@ -89,10 +112,7 @@
         //check for box left of the line
         if (horizontalLines[row][column-1] == 1 & horizontalLines[row+1][column-1] == 1 & verticalLines [row][column-1] == 1) {
             boxes[row][column-1] = 1;
-            Coordinate *box3Coordinate = [[Coordinate alloc] init];
-            box3Coordinate.row = row;
-            box3Coordinate.column = column-1;
-            box3Coordinate.objectType = kBox;
+            Coordinate *box3Coordinate = [[Coordinate alloc] initWithRow:row Column:(column-1) AndObjectType:kBox];
             [boxesArray addObject:box3Coordinate];
             
             [box3Coordinate release];
@@ -102,10 +122,7 @@
         if (column < dotsCount - 1) {
             if (horizontalLines[row][column] == 1 & horizontalLines[row+1][column] == 1 & verticalLines [row][column+1] == 1) {
                 boxes[row][column] = 1;
-                Coordinate *box4Coordinate = [[Coordinate alloc] init];
-                box4Coordinate.row = row;
-                box4Coordinate.column = column;
-                box4Coordinate.objectType = kBox;
+                Coordinate *box4Coordinate = [[Coordinate alloc] initWithRow:row Column:column AndObjectType:objectType];
                 [boxesArray addObject:box4Coordinate];
                 
                 [box4Coordinate release];
@@ -117,6 +134,14 @@
     }
     
     return boxesArray;
+}
+
+-(void)changeCurrentPlayer {
+    if (currentPlayer == player1) {
+        currentPlayer = player2;
+    } else {
+        currentPlayer = player1;
+    }
 }
 
 @end

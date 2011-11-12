@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA1C18311452CB200045BA23 /* HorizontLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1C18301452CB200045BA23 /* HorizontLine.png */; };
+		BA1C18311452CB200045BA23 /* blueHorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1C18301452CB200045BA23 /* blueHorizontalLine.png */; };
+		BA6A8243146EFBA40002B579 /* redHorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6A8242146EFBA40002B579 /* redHorizontalLine.png */; };
+		BA6A8245146EFD200002B579 /* redBox.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6A8244146EFD200002B579 /* redBox.png */; };
 		BAA9AE23144B034D0029D4A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE22144B034D0029D4A6 /* UIKit.framework */; };
 		BAA9AE25144B034D0029D4A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE24144B034D0029D4A6 /* Foundation.framework */; };
 		BAA9AE27144B034D0029D4A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */; };
@@ -21,7 +23,7 @@
 		BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */; };
 		BABD940A145D32CF008CF800 /* TwoPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BABD9408145D32CF008CF800 /* TwoPlayersViewController.m */; };
 		BABD940B145D32CF008CF800 /* TwoPlayersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABD9409145D32CF008CF800 /* TwoPlayersViewController.xib */; };
-		BABD940E145D7A40008CF800 /* BlueSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = BABD940D145D7A40008CF800 /* BlueSquare.png */; };
+		BABD940E145D7A40008CF800 /* BlueBox.png in Resources */ = {isa = PBXBuildFile; fileRef = BABD940D145D7A40008CF800 /* BlueBox.png */; };
 		BAC1B2FD145432640085E9C1 /* Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC1B2FC145432640085E9C1 /* Dot.png */; };
 		BAC209C6145C414400C3DC7F /* LineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC209C5145C414400C3DC7F /* LineButton.m */; };
 		BAC209CA145C50AB00C3DC7F /* Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC209C9145C50AB00C3DC7F /* Coordinate.m */; };
@@ -37,7 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA1C18301452CB200045BA23 /* HorizontLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HorizontLine.png; sourceTree = "<group>"; };
+		BA1C18301452CB200045BA23 /* blueHorizontalLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueHorizontalLine.png; sourceTree = "<group>"; };
+		BA6A8242146EFBA40002B579 /* redHorizontalLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redHorizontalLine.png; sourceTree = "<group>"; };
+		BA6A8244146EFD200002B579 /* redBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redBox.png; sourceTree = "<group>"; };
 		BAA9AE1E144B034D0029D4A6 /* Dots And Boxes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dots And Boxes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA9AE22144B034D0029D4A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BAA9AE24144B034D0029D4A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,7 +61,7 @@
 		BABD9407145D32CF008CF800 /* TwoPlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoPlayersViewController.h; sourceTree = "<group>"; };
 		BABD9408145D32CF008CF800 /* TwoPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoPlayersViewController.m; sourceTree = "<group>"; };
 		BABD9409145D32CF008CF800 /* TwoPlayersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPlayersViewController.xib; sourceTree = "<group>"; };
-		BABD940D145D7A40008CF800 /* BlueSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueSquare.png; sourceTree = "<group>"; };
+		BABD940D145D7A40008CF800 /* BlueBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBox.png; sourceTree = "<group>"; };
 		BAC1B2FC145432640085E9C1 /* Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dot.png; sourceTree = "<group>"; };
 		BAC209C4145C414400C3DC7F /* LineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineButton.h; sourceTree = "<group>"; };
 		BAC209C5145C414400C3DC7F /* LineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineButton.m; sourceTree = "<group>"; };
@@ -152,8 +156,10 @@
 		BAA9AE41144B03C60029D4A6 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				BABD940D145D7A40008CF800 /* BlueSquare.png */,
-				BA1C18301452CB200045BA23 /* HorizontLine.png */,
+				BA6A8244146EFD200002B579 /* redBox.png */,
+				BA6A8242146EFBA40002B579 /* redHorizontalLine.png */,
+				BABD940D145D7A40008CF800 /* BlueBox.png */,
+				BA1C18301452CB200045BA23 /* blueHorizontalLine.png */,
 				BAC1B2FC145432640085E9C1 /* Dot.png */,
 			);
 			name = images;
@@ -251,10 +257,12 @@
 				BADFECFF1452A0FC002AAF8F /* OnePlayerViewController.xib in Resources */,
 				BADFED051452A357002AAF8F /* GameViewController.xib in Resources */,
 				BADFED0A1452A49A002AAF8F /* RulesViewController.xib in Resources */,
-				BA1C18311452CB200045BA23 /* HorizontLine.png in Resources */,
+				BA1C18311452CB200045BA23 /* blueHorizontalLine.png in Resources */,
 				BAC1B2FD145432640085E9C1 /* Dot.png in Resources */,
 				BABD940B145D32CF008CF800 /* TwoPlayersViewController.xib in Resources */,
-				BABD940E145D7A40008CF800 /* BlueSquare.png in Resources */,
+				BABD940E145D7A40008CF800 /* BlueBox.png in Resources */,
+				BA6A8243146EFBA40002B579 /* redHorizontalLine.png in Resources */,
+				BA6A8245146EFD200002B579 /* redBox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
