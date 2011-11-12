@@ -25,6 +25,9 @@
 }
 
 -(UIImage*)getPlayerHorizontalLineImage {
+    
+    
+    
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@HorizontalLine.png", color]];
 }
 
