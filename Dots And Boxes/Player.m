@@ -13,7 +13,7 @@
 
 @synthesize color;
 @synthesize name;
-@synthesize boxes;
+@synthesize boxesCount;
 
 -(id)initWithColor:(NSString *)inColor Name:(NSString *)inName {
     self = [super init];

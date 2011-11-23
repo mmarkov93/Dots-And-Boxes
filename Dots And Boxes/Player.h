@@ -12,12 +12,12 @@
 @interface Player : NSObject {
     NSString *color;
     NSString *name;
-    int boxes;
+    int boxesCount;
 }
 
 @property (nonatomic, retain) NSString *color;
 @property (nonatomic, retain) NSString *name;
-@property int boxes;
+@property int boxesCount;
 
 -(UIImage*)getPlayerHorizontalLineImage;
 -(UIImage*)getPlayerVerticalLineImage;

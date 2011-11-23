@@ -19,8 +19,19 @@
 -(IBAction)startButtonPressed {
     GameViewController *gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
     
-    [self.navigationController pushViewController:gameController animated:YES];
+    gameController.game = [[Game alloc] init];
     
+    
+    Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
+    Player *player2 = [[Player alloc] initWithColor:@"red" Name:@"Player2"];    
+    
+    gameController.game.player1 = player1;
+    gameController.game.player2 = player2;
+    gameController.game.currentPlayer = player1;
+    [player1 release];
+    [player2 release];
+    
+    [self.navigationController pushViewController:gameController animated:YES];
     [gameController release];
 }
 

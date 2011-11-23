@@ -30,6 +30,7 @@
 @property int dotsCount;
 
 -(NSArray*)checkForBoxes:(Coordinate*) coordinate;
+-(void)putBoxes:(NSArray*) boxes;
 -(void)changeCurrentPlayer;
 
 @end

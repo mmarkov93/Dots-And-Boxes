@@ -16,11 +16,23 @@
     Game *game;
     int lineLength;
     int dotSize;
+    
+    UILabel *player1ScoreLabel;
+    UILabel *player2ScoreLabel;
+    UILabel *currentPlayerLabel;
+    NSMutableArray *horizontalButtons;
+    NSMutableArray *verticalButtons;
 }
 
 @property (nonatomic, retain) Game *game;
 @property int lineLength;
 @property int dotSize;
+
+@property (nonatomic, retain) IBOutlet UILabel *player1ScoreLabel;
+@property (nonatomic, retain) IBOutlet UILabel *player2ScoreLabel;
+@property (nonatomic, retain) IBOutlet UILabel *currentPlayerLabel;
+@property (nonatomic, retain) NSMutableArray *horizontalButtons;
+@property (nonatomic, retain) NSMutableArray *verticalButtons;
 
 -(IBAction)backButtonPressed;
 

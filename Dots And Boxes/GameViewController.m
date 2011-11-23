@@ -16,6 +16,9 @@
 
 @synthesize game;
 @synthesize lineLength, dotSize;
+@synthesize verticalButtons, horizontalButtons;
+
+@synthesize player1ScoreLabel, player2ScoreLabel, currentPlayerLabel;
 
 -(void)drawSqaresWithCoordinates:(NSArray*) coordinates {
     //UIImage *sqareImage = [UIImage imageNamed:@"BlueSquare.png"];
@@ -36,6 +39,12 @@
     
 }
 
+-(void)updateView {
+    player1ScoreLabel.text = [NSString stringWithFormat:@"%d",game.player1.boxesCount];
+    player2ScoreLabel.text = [NSString stringWithFormat:@"%d",game.player2.boxesCount];
+    currentPlayerLabel.text = game.currentPlayer.name;
+}
+
 -(void)touchUpInside:(id)sender {
     LineButton *currentButton = (LineButton*) sender;
     [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
@@ -48,18 +57,35 @@
     }
     
     
-    NSArray *numOfBoxes = [game checkForBoxes:coordinate];
-    if ([numOfBoxes count] > 0) {
-        [self drawSqaresWithCoordinates:numOfBoxes];
+    
+    
+    
+    if (currentButton.coordinate.row == 0) {
+        UIButton *button = (UIButton*)[self.view viewWithTag:22];
+        [button setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+        button.enabled = false;
+    }
+    
+    
+    
+    
+    
+    NSArray *boxes  = [game checkForBoxes:coordinate];
+    [game putBoxes:boxes];
+    if ([boxes count] > 0) {
+        game.currentPlayer.boxesCount +=[boxes count];
+        [self drawSqaresWithCoordinates:boxes];
     } else {
         [game changeCurrentPlayer];
     }
-//    [self drawSqaresWithCoordinates:[game checkForBoxes:coordinate]];
     
+    if ((game.player1.boxesCount + game.player2.boxesCount) == pow((game.dotsCount-1), 2)) {
+        UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"WIN" message:[NSString stringWithFormat:@"%@ wins the game", game.currentPlayer.name]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        [winAlert show];
+        [winAlert release];
+    }
     
-    
-//    NSLog(@"Row:%d  Column:%d", [coordinate row], [coordinate column]);
-    //    NSLog(@"TouchUpInside :%@", [[sender titleLabel] text]);
+    [self updateView];
 }
 
 -(void)touchUpOutside:(id)sender {
@@ -69,6 +95,7 @@
 
 
 -(void)touchDown:(id)sender {
+    
     UIButton *currentButton = (UIButton*) sender;
     [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage]forState:UIControlStateNormal];
 //    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
@@ -76,7 +103,7 @@
 
 -(void)dragInside:(id)sender {
     UIButton *currentButton = (UIButton*) sender;
-    [currentButton setBackgroundImage:[UIImage imageNamed:@"HorizontLine.png"]forState:UIControlStateNormal];
+    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateNormal];
     NSLog(@"DragInside :%@", [[sender titleLabel] text]);
 }
 
@@ -105,6 +132,7 @@
     [button addTarget:self action:@selector(dragOutside:) forControlEvents:UIControlEventTouchDragOutside];
     
     button.frame = rect;
+    button.tag = coordinate.row * 10 + coordinate.column;
     [self.view addSubview:button];
 }
 
@@ -185,21 +213,11 @@
 
 - (void)viewDidLoad
 {
-    //    [self createButton];
-    game = [[Game alloc] init];
     int dotsCount = [game dotsCount];
+    NSLog(@"%d", dotsCount);
     dotSize = 15 - dotsCount;
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
     [self createDotsAndLines];
- 
-    Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
-    Player *player2 = [[Player alloc] initWithColor:@"red" Name:@"Player2"];    
-    
-    game.player1 = player1;
-    game.player2 = player2;
-    game.currentPlayer = player1;
-    [player1 release];
-    [player2 release];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

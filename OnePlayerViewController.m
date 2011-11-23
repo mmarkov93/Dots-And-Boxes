@@ -8,7 +8,7 @@
 
 #import "OnePlayerViewController.h"
 #import "GameViewController.h"
-
+#import "ComputerEasy.h"
 
 @implementation OnePlayerViewController
 
@@ -18,8 +18,20 @@
 
 -(IBAction)startButtonPressed {
     GameViewController *gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
-    [self.navigationController pushViewController:gameController animated:YES];
     
+    gameController.game = [[Game alloc] init];
+    
+    
+    Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
+    ComputerEasy *player2 = [[ComputerEasy alloc] initWithColor:@"red" Name:@"Computer"];    
+    
+    gameController.game.player1 = player1;
+    gameController.game.player2 = player2;
+    gameController.game.currentPlayer = player1;
+    [player1 release];
+    [player2 release];
+    
+    [self.navigationController pushViewController:gameController animated:YES];
     [gameController release];
     
 }

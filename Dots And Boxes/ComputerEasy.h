@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "Player.h"
-
+#import "Game.h"
+#import "Coordinate.h"
 
 @interface ComputerEasy : Player {
-    
+    Game *game;
 }
+
+@property (nonatomic, retain) Game *game;
+
+-(NSArray*)getPosibleMoves;
+-(Coordinate*)makeMove;
 
 @end
