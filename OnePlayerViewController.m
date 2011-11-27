@@ -24,7 +24,7 @@
     
     Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
     ComputerEasy *player2 = [[ComputerEasy alloc] initWithColor:@"red" Name:@"Computer"];    
-    
+    player2.game = gameController.game;
     gameController.game.player1 = player1;
     gameController.game.player2 = player2;
     gameController.game.currentPlayer = player1;

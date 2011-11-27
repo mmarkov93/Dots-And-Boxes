@@ -35,7 +35,7 @@
         for (int x = 0; x < dotsCount; x++) {
             for (int y = 0; y < dotsCount; y++) {
                 horizontalLines[x][y] = 0;
-                horizontalLines[x][y] = 0;
+                verticalLines[x][y] = 0;
                 if (x != dotsCount-1 & y != dotsCount-1) {
                     boxes[x][y] = 0;
                 }
@@ -90,7 +90,6 @@
     NSMutableArray *boxesArray = [[NSMutableArray alloc] init];
     
     if (objectType == kHorizontalLine) {
-        NSLog(@"HorizontalLine");
         //check for box above the line
         if (row > 0) {
             if ((verticalLines[row-1][column] == 1) && (verticalLines[row-1][column+1] == 1) && (horizontalLines [row-1][column] == 1)) {
@@ -113,7 +112,6 @@
         }
         
     } else if (objectType == kVerticalLine) {
-        NSLog(@"VerverticalLines");
         //check for box left of the line
         if ((horizontalLines[row][column-1] == 1) && (horizontalLines[row+1][column-1] == 1) && (verticalLines[row][column-1] == 1)) {
             Coordinate *box3Coordinate = [[Coordinate alloc] initWithRow:row Column:(column-1) AndObjectType:kBox];

@@ -10,6 +10,7 @@
 #import "LineButton.h"
 #import "Game.h"
 #import "Coordinate.h"
+#import "ComputerEasy.h"
 
 
 @implementation GameViewController
@@ -45,32 +46,34 @@
     currentPlayerLabel.text = game.currentPlayer.name;
 }
 
--(void)touchUpInside:(id)sender {
-    LineButton *currentButton = (LineButton*) sender;
-    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
-    currentButton.enabled = false;
-    Coordinate *coordinate = [currentButton coordinate];
+-(void)drawLine:(Coordinate*) coordinate {
+    if (coordinate.objectType == kHorizontalLine) {
+        NSLog(@"ChooseHorizontal row:%d, column:%d", coordinate.row, coordinate.column);
+    } else if (coordinate.objectType == kVerticalLine) {
+        NSLog(@"ChooseVertical row:%d, column:%d", coordinate.row, coordinate.column);
+    }
+    
+    
+    int tag = coordinate.row*100 + coordinate.column*10 + 1;
     if (coordinate.objectType == kVerticalLine) {
-        game.verticalLines[coordinate.row][coordinate.column] = 1;
+        tag += 1;
+    }
+    
+    UIButton *button = (UIButton*)[self.view viewWithTag:tag];
+    [button setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+    button.enabled = false;
+}
+
+
+
+- (BOOL)playedMove:(Coordinate *)cord {
+    if (cord.objectType == kVerticalLine) {
+        game.verticalLines[cord.row][cord.column] = 1;
     } else {
-        game.horizontalLines[coordinate.row][coordinate.column] = 1;
+        game.horizontalLines[cord.row][cord.column] = 1;
     }
     
-    
-    
-    
-    
-    if (currentButton.coordinate.row == 0) {
-        UIButton *button = (UIButton*)[self.view viewWithTag:22];
-        [button setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
-        button.enabled = false;
-    }
-    
-    
-    
-    
-    
-    NSArray *boxes  = [game checkForBoxes:coordinate];
+    NSArray *boxes  = [game checkForBoxes:cord];
     [game putBoxes:boxes];
     if ([boxes count] > 0) {
         game.currentPlayer.boxesCount +=[boxes count];
@@ -79,13 +82,53 @@
         [game changeCurrentPlayer];
     }
     
+    [self updateView];
     if ((game.player1.boxesCount + game.player2.boxesCount) == pow((game.dotsCount-1), 2)) {
         UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"WIN" message:[NSString stringWithFormat:@"%@ wins the game", game.currentPlayer.name]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
         [winAlert show];
         [winAlert release];
+        return false;
     }
+    return true;
+}
+
+-(void)touchUpInside:(id)sender {
+    LineButton *currentButton = (LineButton*) sender;
+    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+    currentButton.enabled = false;
+    Coordinate *currentCord = [currentButton coordinate];
+    [self playedMove:currentCord];
+//    if (cord.objectType == kVerticalLine) {
+//        game.verticalLines[cord.row][cord.column] = 1;
+//    } else {
+//        game.horizontalLines[cord.row][cord.column] = 1;
+//    }
+//    
+//    NSArray *boxes  = [game checkForBoxes:cord];
+//    [game putBoxes:boxes];
+//    if ([boxes count] > 0) {
+//        game.currentPlayer.boxesCount +=[boxes count];
+//        [self drawSqaresWithCoordinates:boxes];
+//    } else {
+//        [game changeCurrentPlayer];
+//    }
     
-    [self updateView];
+    BOOL gameFinish = true;
+    while([game.currentPlayer isKindOfClass:[ComputerEasy class]] && gameFinish) {
+        ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
+        Coordinate* cord = [player2 makeMove];
+        [self drawLine:cord];
+        gameFinish = [self playedMove:cord];
+        
+    }
+//    if ((game.player1.boxesCount + game.player2.boxesCount) == pow((game.dotsCount-1), 2)) {
+//        UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"WIN" message:[NSString stringWithFormat:@"%@ wins the game", game.currentPlayer.name]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+//        [winAlert show];
+//        [winAlert release];
+//    }
+//    
+//    [self updateView];
+//    
 }
 
 -(void)touchUpOutside:(id)sender {
@@ -98,7 +141,7 @@
     
     UIButton *currentButton = (UIButton*) sender;
     [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage]forState:UIControlStateNormal];
-//    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
+    //    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
 }
 
 -(void)dragInside:(id)sender {
@@ -120,9 +163,10 @@
     
     if (coordinate.objectType == kHorizontalLine) {
         [button setBackgroundImage:[UIImage imageNamed:@"blueHorizontLine.png"] forState:UIControlStateDisabled];
+        button.tag = coordinate.row * 100 + coordinate.column*10 + 1;
     } else {
-        //add image for Vertical Line
         [button setBackgroundImage:[UIImage imageNamed:@"blueHorizontLine.png"] forState:UIControlStateDisabled];
+        button.tag = coordinate.row * 100 + coordinate.column*10 + 2;
     }
     
     
@@ -132,7 +176,6 @@
     [button addTarget:self action:@selector(dragOutside:) forControlEvents:UIControlEventTouchDragOutside];
     
     button.frame = rect;
-    button.tag = coordinate.row * 10 + coordinate.column;
     [self.view addSubview:button];
 }
 
@@ -171,9 +214,6 @@
             dotView.frame = CGRectMake(startPointX + i*lineLength + i*dotSize, 
                                        startPointY + j*lineLength + j*dotSize, 
                                        dotSize, dotSize);
-            if (i == 0 & j == 0) {
-                NSLog(@"Point x:%f y:%f", dotView.frame.origin.x, dotView.frame.origin.y);
-            }
             
             [self.view addSubview:dotView];
             
