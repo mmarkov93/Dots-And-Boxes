@@ -12,18 +12,34 @@
 
 @implementation OnePlayerViewController
 
+@synthesize chooseComputerController;
+@synthesize chooseFieldController;
+
 -(IBAction)backButtonPressed {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)startButtonPressed {
+    
+    
     GameViewController *gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
     
-    gameController.game = [[Game alloc] init];
-    
+    gameController.game = [[Game alloc] initWithBoxCount:chooseFieldController.chosenIndex];
     
     Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
-    ComputerEasy *player2 = [[ComputerEasy alloc] initWithColor:@"red" Name:@"Computer"];    
+    ComputerEasy *player2;
+    
+    int chosenComputer = chooseComputerController.chosenIndex;
+    switch (chosenComputer) {
+        case 1:
+            player2 = [[ComputerEasy alloc] initWithColor:@"red" Name:@"Computer"];    
+            break;
+        case 2:
+            //TODO alloc ComputerHard
+        default:
+            break;
+    }
+    
     player2.game = gameController.game;
     gameController.game.player1 = player1;
     gameController.game.player2 = player2;
@@ -62,8 +78,22 @@
 
 - (void)viewDidLoad
 {
+    chooseComputerController = [[ChooseComputerController alloc] initWithNibName:@"ChooseComputerController" bundle:nil];
+    int width = chooseComputerController.view.frame.size.width;
+    int height = chooseComputerController.view.frame.size.height;
+    int marginTop = 50;
+    
+    chooseComputerController.view.frame = CGRectMake(0, marginTop, width, height);
+
+    chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
+    chooseFieldController.view.frame = CGRectMake(0, 50 + height + 20, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+    
+    [self.view addSubview:chooseFieldController.view];    
+    [self.view addSubview:chooseComputerController.view];
+    
+    
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload

@@ -12,6 +12,8 @@
 
 @implementation TwoPlayersViewController
 
+@synthesize chooseFieldController;
+
 -(IBAction)backButtonPressed {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -19,7 +21,7 @@
 -(IBAction)startButtonPressed {
     GameViewController *gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
     
-    gameController.game = [[Game alloc] init];
+    gameController.game = [[Game alloc] initWithBoxCount:chooseFieldController.chosenIndex];
     
     
     Player *player1 = [[Player alloc] initWithColor:@"blue" Name:@"Player1"];
@@ -62,7 +64,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
+    chooseFieldController.view.frame = CGRectMake(0, 50, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+    [self.view
+     addSubview:chooseFieldController.view];
 }
 
 - (void)viewDidUnload

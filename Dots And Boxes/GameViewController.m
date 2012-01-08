@@ -84,7 +84,20 @@
     
     [self updateView];
     if ((game.player1.boxesCount + game.player2.boxesCount) == pow((game.dotsCount-1), 2)) {
-        UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"WIN" message:[NSString stringWithFormat:@"%@ wins the game", game.currentPlayer.name]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        UIAlertView *winAlert; 
+        NSString *message;
+        NSString *title = @"WIN";
+        
+        if (game.player1.boxesCount == game.player2.boxesCount) {
+            message = @"The game is tie";
+            title = @"TIE";
+        } else if (game.player1.boxesCount > game.player2.boxesCount) {        
+            message = [NSString stringWithFormat:@"%@ wins the game", game.player1.name];
+        } else {
+            message = [NSString stringWithFormat:@"%@ wins the game", game.player2.name];
+        }
+
+        winAlert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];        
         [winAlert show];
         [winAlert release];
         return false;
@@ -98,21 +111,7 @@
     currentButton.enabled = false;
     Coordinate *currentCord = [currentButton coordinate];
     [self playedMove:currentCord];
-//    if (cord.objectType == kVerticalLine) {
-//        game.verticalLines[cord.row][cord.column] = 1;
-//    } else {
-//        game.horizontalLines[cord.row][cord.column] = 1;
-//    }
-//    
-//    NSArray *boxes  = [game checkForBoxes:cord];
-//    [game putBoxes:boxes];
-//    if ([boxes count] > 0) {
-//        game.currentPlayer.boxesCount +=[boxes count];
-//        [self drawSqaresWithCoordinates:boxes];
-//    } else {
-//        [game changeCurrentPlayer];
-//    }
-    
+
     BOOL gameFinish = true;
     while([game.currentPlayer isKindOfClass:[ComputerEasy class]] && gameFinish) {
         ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
@@ -121,14 +120,6 @@
         gameFinish = [self playedMove:cord];
         
     }
-//    if ((game.player1.boxesCount + game.player2.boxesCount) == pow((game.dotsCount-1), 2)) {
-//        UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"WIN" message:[NSString stringWithFormat:@"%@ wins the game", game.currentPlayer.name]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
-//        [winAlert show];
-//        [winAlert release];
-//    }
-//    
-//    [self updateView];
-//    
 }
 
 -(void)touchUpOutside:(id)sender {

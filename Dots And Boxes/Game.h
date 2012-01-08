@@ -32,5 +32,6 @@
 -(NSArray*)checkForBoxes:(Coordinate*) coordinate;
 -(void)putBoxes:(NSArray*) boxes;
 -(void)changeCurrentPlayer;
+-(id) initWithBoxCount:(int) boxCount;
 
 @end

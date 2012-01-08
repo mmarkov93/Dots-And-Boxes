@@ -21,6 +21,10 @@
 		BAA9AE3B144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE39144B034E0029D4A6 /* Dots_And_Boxes.xcdatamodeld */; };
 		BAA9AE55144B0C3C0029D4A6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */; };
 		BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */; };
+		BAAE474414B23FDE002F5E7C /* ChooseFieldController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAE474214B23FDD002F5E7C /* ChooseFieldController.m */; };
+		BAAE474514B23FDE002F5E7C /* ChooseFieldController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAE474314B23FDD002F5E7C /* ChooseFieldController.xib */; };
+		BAB17D6C149E19E5000991E6 /* ChooseComputerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB17D6A149E19E5000991E6 /* ChooseComputerController.m */; };
+		BAB17D6D149E19E5000991E6 /* ChooseComputerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAB17D6B149E19E5000991E6 /* ChooseComputerController.xib */; };
 		BABD940A145D32CF008CF800 /* TwoPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BABD9408145D32CF008CF800 /* TwoPlayersViewController.m */; };
 		BABD940B145D32CF008CF800 /* TwoPlayersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABD9409145D32CF008CF800 /* TwoPlayersViewController.xib */; };
 		BABD940E145D7A40008CF800 /* BlueBox.png in Resources */ = {isa = PBXBuildFile; fileRef = BABD940D145D7A40008CF800 /* BlueBox.png */; };
@@ -58,6 +62,12 @@
 		BAA9AE52144B0C3C0029D4A6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = "Dots And Boxes.xcodeproj/RootViewController.h"; sourceTree = SOURCE_ROOT; };
 		BAA9AE53144B0C3C0029D4A6 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = "Dots And Boxes.xcodeproj/RootViewController.m"; sourceTree = SOURCE_ROOT; };
 		BAA9AE54144B0C3C0029D4A6 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = "Dots And Boxes.xcodeproj/RootViewController.xib"; sourceTree = SOURCE_ROOT; };
+		BAAE474114B23FDA002F5E7C /* ChooseFieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseFieldController.h; sourceTree = "<group>"; };
+		BAAE474214B23FDD002F5E7C /* ChooseFieldController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseFieldController.m; sourceTree = "<group>"; };
+		BAAE474314B23FDD002F5E7C /* ChooseFieldController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseFieldController.xib; sourceTree = "<group>"; };
+		BAB17D69149E19E5000991E6 /* ChooseComputerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseComputerController.h; sourceTree = "<group>"; };
+		BAB17D6A149E19E5000991E6 /* ChooseComputerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseComputerController.m; sourceTree = "<group>"; };
+		BAB17D6B149E19E5000991E6 /* ChooseComputerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseComputerController.xib; sourceTree = "<group>"; };
 		BABD9407145D32CF008CF800 /* TwoPlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoPlayersViewController.h; sourceTree = "<group>"; };
 		BABD9408145D32CF008CF800 /* TwoPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoPlayersViewController.m; sourceTree = "<group>"; };
 		BABD9409145D32CF008CF800 /* TwoPlayersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPlayersViewController.xib; sourceTree = "<group>"; };
@@ -200,6 +210,12 @@
 				BABD9407145D32CF008CF800 /* TwoPlayersViewController.h */,
 				BABD9408145D32CF008CF800 /* TwoPlayersViewController.m */,
 				BABD9409145D32CF008CF800 /* TwoPlayersViewController.xib */,
+				BAB17D69149E19E5000991E6 /* ChooseComputerController.h */,
+				BAB17D6A149E19E5000991E6 /* ChooseComputerController.m */,
+				BAB17D6B149E19E5000991E6 /* ChooseComputerController.xib */,
+				BAAE474114B23FDA002F5E7C /* ChooseFieldController.h */,
+				BAAE474214B23FDD002F5E7C /* ChooseFieldController.m */,
+				BAAE474314B23FDD002F5E7C /* ChooseFieldController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -266,6 +282,8 @@
 				BABD940E145D7A40008CF800 /* BlueBox.png in Resources */,
 				BA6A8243146EFBA40002B579 /* redHorizontalLine.png in Resources */,
 				BA6A8245146EFD200002B579 /* redBox.png in Resources */,
+				BAB17D6D149E19E5000991E6 /* ChooseComputerController.xib in Resources */,
+				BAAE474514B23FDE002F5E7C /* ChooseFieldController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +307,8 @@
 				BAC209C6145C414400C3DC7F /* LineButton.m in Sources */,
 				BAC209CA145C50AB00C3DC7F /* Coordinate.m in Sources */,
 				BABD940A145D32CF008CF800 /* TwoPlayersViewController.m in Sources */,
+				BAB17D6C149E19E5000991E6 /* ChooseComputerController.m in Sources */,
+				BAAE474414B23FDE002F5E7C /* ChooseFieldController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -335,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -352,9 +374,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dots And Boxes/Dots And Boxes-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Dots And Boxes/Dots And Boxes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -367,9 +390,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dots And Boxes/Dots And Boxes-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "Dots And Boxes/Dots And Boxes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

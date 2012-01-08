@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ChooseComputerController.h"
+#import "ChooseFieldController.h"
 
 @interface OnePlayerViewController : UIViewController {
-    
+    ChooseComputerController *chooseComputerController;
+    ChooseFieldController *chooseFieldController;
 }
+
+@property (nonatomic, retain) ChooseComputerController *chooseComputerController;
+@property (nonatomic, retain) ChooseFieldController *chooseFieldController;
 
 -(IBAction)startButtonPressed;
 -(IBAction)backButtonPressed;
