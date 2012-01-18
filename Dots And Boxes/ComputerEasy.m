@@ -20,13 +20,10 @@
         for (int j=0; j<game.dotsCount; j++) {
             
             if (i<game.dotsCount - 1) {
-                NSLog(@"NE");
                 if (game.verticalLines[i][j] == 0) {
                     
                     Coordinate *verticalCord = [[Coordinate alloc] initWithRow:i Column:j AndObjectType:kVerticalLine];
                     [posibleMoves addObject:verticalCord];
-                    NSLog(@"DA");
-                    
                 }
             }
             

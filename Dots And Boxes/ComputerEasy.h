@@ -19,5 +19,5 @@
 
 -(NSArray*)getPosibleMoves;
 -(Coordinate*)makeMove;
-
+-(int)checkForNumberOfLines:(Coordinate*) coordinate;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0C2C3214C417C100CEFFBA /* Box.m in Sources */ = {isa = PBXBuildFile; fileRef = BA0C2C3114C417C100CEFFBA /* Box.m */; };
 		BA1C18311452CB200045BA23 /* blueHorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1C18301452CB200045BA23 /* blueHorizontalLine.png */; };
 		BA6A8243146EFBA40002B579 /* redHorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6A8242146EFBA40002B579 /* redHorizontalLine.png */; };
 		BA6A8245146EFD200002B579 /* redBox.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6A8244146EFD200002B579 /* redBox.png */; };
@@ -31,6 +32,8 @@
 		BAC1B2FD145432640085E9C1 /* Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC1B2FC145432640085E9C1 /* Dot.png */; };
 		BAC209C6145C414400C3DC7F /* LineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC209C5145C414400C3DC7F /* LineButton.m */; };
 		BAC209CA145C50AB00C3DC7F /* Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC209C9145C50AB00C3DC7F /* Coordinate.m */; };
+		BAC4BE1114B9D89800463F36 /* ComputerMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC4BE1014B9D89800463F36 /* ComputerMedium.m */; };
+		BAC4BE1514B9E5B200463F36 /* Chain.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC4BE1414B9E5B200463F36 /* Chain.m */; };
 		BAD48F931454051500931695 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F921454051500931695 /* Player.m */; };
 		BAD48F961454055400931695 /* ComputerEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F951454055400931695 /* ComputerEasy.m */; };
 		BAD48F99145405D200931695 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F98145405D200931695 /* Game.m */; };
@@ -43,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA0C2C3014C417C100CEFFBA /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
+		BA0C2C3114C417C100CEFFBA /* Box.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Box.m; sourceTree = "<group>"; };
 		BA1C18301452CB200045BA23 /* blueHorizontalLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueHorizontalLine.png; sourceTree = "<group>"; };
 		BA6A8242146EFBA40002B579 /* redHorizontalLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redHorizontalLine.png; sourceTree = "<group>"; };
 		BA6A8244146EFD200002B579 /* redBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redBox.png; sourceTree = "<group>"; };
@@ -77,6 +82,10 @@
 		BAC209C5145C414400C3DC7F /* LineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineButton.m; sourceTree = "<group>"; };
 		BAC209C8145C50AB00C3DC7F /* Coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinate.h; sourceTree = "<group>"; };
 		BAC209C9145C50AB00C3DC7F /* Coordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coordinate.m; sourceTree = "<group>"; };
+		BAC4BE0F14B9D89800463F36 /* ComputerMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerMedium.h; sourceTree = "<group>"; };
+		BAC4BE1014B9D89800463F36 /* ComputerMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerMedium.m; sourceTree = "<group>"; };
+		BAC4BE1314B9E5B100463F36 /* Chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chain.h; sourceTree = "<group>"; };
+		BAC4BE1414B9E5B200463F36 /* Chain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chain.m; sourceTree = "<group>"; };
 		BAD48F911454051500931695 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		BAD48F921454051500931695 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		BAD48F941454055400931695 /* ComputerEasy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerEasy.h; sourceTree = "<group>"; };
@@ -182,12 +191,18 @@
 				BAD48F921454051500931695 /* Player.m */,
 				BAD48F941454055400931695 /* ComputerEasy.h */,
 				BAD48F951454055400931695 /* ComputerEasy.m */,
+				BAC4BE0F14B9D89800463F36 /* ComputerMedium.h */,
+				BAC4BE1014B9D89800463F36 /* ComputerMedium.m */,
 				BAD48F97145405D200931695 /* Game.h */,
 				BAD48F98145405D200931695 /* Game.m */,
 				BAC209C4145C414400C3DC7F /* LineButton.h */,
 				BAC209C5145C414400C3DC7F /* LineButton.m */,
 				BAC209C8145C50AB00C3DC7F /* Coordinate.h */,
 				BAC209C9145C50AB00C3DC7F /* Coordinate.m */,
+				BAC4BE1314B9E5B100463F36 /* Chain.h */,
+				BAC4BE1414B9E5B200463F36 /* Chain.m */,
+				BA0C2C3014C417C100CEFFBA /* Box.h */,
+				BA0C2C3114C417C100CEFFBA /* Box.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -309,6 +324,9 @@
 				BABD940A145D32CF008CF800 /* TwoPlayersViewController.m in Sources */,
 				BAB17D6C149E19E5000991E6 /* ChooseComputerController.m in Sources */,
 				BAAE474414B23FDE002F5E7C /* ChooseFieldController.m in Sources */,
+				BAC4BE1114B9D89800463F36 /* ComputerMedium.m in Sources */,
+				BAC4BE1514B9E5B200463F36 /* Chain.m in Sources */,
+				BA0C2C3214C417C100CEFFBA /* Box.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

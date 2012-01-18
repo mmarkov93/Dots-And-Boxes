@@ -9,6 +9,7 @@
 #import "OnePlayerViewController.h"
 #import "GameViewController.h"
 #import "ComputerEasy.h"
+#import "ComputerMedium.h"
 
 @implementation OnePlayerViewController
 
@@ -35,6 +36,7 @@
             player2 = [[ComputerEasy alloc] initWithColor:@"red" Name:@"Computer"];    
             break;
         case 2:
+            player2 = [[ComputerMedium alloc] initWithColor:@"red" Name:@"Computer"];
             //TODO alloc ComputerHard
         default:
             break;
