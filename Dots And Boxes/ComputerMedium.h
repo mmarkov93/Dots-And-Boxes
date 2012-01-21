@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "ComputerEasy.h"
 
+#define kLongChains     @"LongChains"
+#define kShortChains    @"ShortChains"
+
 typedef enum CommonSide {
     Left,
     Right,
@@ -16,6 +19,10 @@ typedef enum CommonSide {
     Down
 }CommonSide;
 
-@interface ComputerMedium : ComputerEasy
+@interface ComputerMedium : ComputerEasy {
+    NSMutableDictionary *chainDictionary;
+}
+
+@property(nonatomic, retain) NSMutableDictionary *chainDictionary;
 
 @end
