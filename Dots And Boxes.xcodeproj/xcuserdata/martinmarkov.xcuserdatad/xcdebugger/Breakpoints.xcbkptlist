@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Dots And Boxes/GameViewController.m"
-         timestampString = "347722891.046562"
+         timestampString = "349005132.714135"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "-addLineButtonWithFrame:coordinate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Dots And Boxes/GameViewController.m"
-         timestampString = "347722891.046562"
+         timestampString = "349005132.714135"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "122"
-         endingLineNumber = "122"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
          landmarkName = "-touchUpInside:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Dots And Boxes/ComputerMedium.m"
-         timestampString = "348838821.117485"
+         timestampString = "349611488.070155"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "415"
+         endingLineNumber = "415"
          landmarkName = "-makeMove"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,12 +51,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Dots And Boxes/ComputerMedium.m"
-         timestampString = "348838821.117485"
+         timestampString = "349611488.070155"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "196"
-         endingLineNumber = "196"
-         landmarkName = "-isBoxInOtherChains:"
+         startingLineNumber = "442"
+         endingLineNumber = "442"
+         landmarkName = "-makeMove"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Dots And Boxes/ComputerMedium.m"
+         timestampString = "349610017.490379"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "329"
+         endingLineNumber = "329"
+         landmarkName = "-getBestMove:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

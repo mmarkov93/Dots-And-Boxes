@@ -20,9 +20,12 @@ typedef enum CommonSide {
 }CommonSide;
 
 @interface ComputerMedium : ComputerEasy {
-    NSMutableDictionary *chainDictionary;
+    NSMutableArray *shortChains;
+    NSMutableArray *loongChains;
+    
 }
 
-@property(nonatomic, retain) NSMutableDictionary *chainDictionary;
+@property(nonatomic, retain) NSMutableArray *shortChains;
+@property(nonatomic, retain) NSMutableArray *longChains;
 
 @end

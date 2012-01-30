@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "ComputerEasy.h"
+#import "FieldService.h"
 
 
 @implementation Game
@@ -47,34 +48,6 @@
     return self;
 }
 
--(bool)checkForBoxAboveTheLine:(Coordinate*)line {
-    int row = line.row;
-    int column = line.column;
-    
-    return ((verticalLines[row-1][column] == 1) && (verticalLines[row-1][column+1] == 1) && (horizontalLines [row-1][column] == 1));
-}
-
--(bool)checkForBoxUnderTheLine:(Coordinate*)line {
-    int row = line.row;
-    int column = line.column;
-    
-    return ((verticalLines[row][column] == 1) && (verticalLines[row][column+1] == 1) && (horizontalLines [row+1][column] == 1));
-}
-
--(bool)checkForBoxLeftOFTheLine:(Coordinate*)line {
-    int row = line.row;
-    int column = line.column;
-    
-    return ((horizontalLines[row][column-1] == 1) && (horizontalLines[row+1][column-1] == 1) && (verticalLines [row][column-1] == 1));
-}
-
--(bool)checkForBoxRightOFTheLine:(Coordinate*)line {
-    int row = line.row;
-    int column = line.column;
-    
-    return ((horizontalLines[row][column] == 1) && (horizontalLines[row+1][column] == 1) && (verticalLines [row][column+1] == 1));
-}
-
 -(void)putBoxes:(NSArray *)boxesArray {
     for (Coordinate *box in boxesArray) {
         int row = box.row;
@@ -83,59 +56,17 @@
     }
 }
 
--(NSArray*)checkForBoxes:(Coordinate *)coordinate {
-    int row = coordinate.row;
-    int column = coordinate.column;
-    ObjectType objectType = coordinate.objectType;
-    NSMutableArray *boxesArray = [[NSMutableArray alloc] init];
+-(NSArray*)checkForBoxes:(Coordinate*) coordinate; {
+    FieldService *fieldService = [[FieldService alloc] initWithVerticalLines:verticalLines HorizontalLines:horizontalLines AndDotsCount:dotsCount];
     
-    if (objectType == kHorizontalLine) {
-        //check for box above the line
-        if (row > 0) {
-            if ([self checkForBoxAboveTheLine:coordinate]) {
-                Coordinate *box1Coordinate = [[Coordinate alloc] initWithRow:(row-1) Column:column AndObjectType:kBox];
-                [boxesArray addObject:box1Coordinate];
-                
-                [box1Coordinate release];
-                NSLog(@"Box row:%d column:%d", row-1, column);
-            }
-        }
-        //check for box under the line
-        if(column < dotsCount -1 & row < dotsCount-1) {
-            if ([self checkForBoxUnderTheLine:coordinate]) {
-                Coordinate *box2Coordinate = [[Coordinate alloc] initWithRow:row Column:column AndObjectType:kBox];
-                [boxesArray addObject:box2Coordinate];
-                
-                [box2Coordinate release];
-                NSLog(@"Box row:%d column:%d", row, column);
-            }
-        }
-        
-    } else if (objectType == kVerticalLine) {
-        //check for box left of the line
-        if ([self checkForBoxLeftOFTheLine:coordinate]) {
-            Coordinate *box3Coordinate = [[Coordinate alloc] initWithRow:row Column:(column-1) AndObjectType:kBox];
-            [boxesArray addObject:box3Coordinate];
-            
-            [box3Coordinate release];
-            NSLog(@"Box row:%d column:%d", row-1, column);
-        }
-        //check for box right of the line
-        if (column < dotsCount - 1) {
-            if ([self checkForBoxRightOFTheLine:coordinate]) {
-                Coordinate *box4Coordinate = [[Coordinate alloc] initWithRow:row Column:column AndObjectType:objectType];
-                [boxesArray addObject:box4Coordinate];
-                
-                [box4Coordinate release];
-                NSLog(@"Box row:%d column:%d", row, column);
-            }
-            
-        }
-        
-    }
+    NSArray *boxesArray = [fieldService checkForBoxes:coordinate];
+    
+    [fieldService release];
     
     return boxesArray;
+    
 }
+
 
 -(void)changeCurrentPlayer {
     if (currentPlayer == player1) {

@@ -48,9 +48,9 @@
 
 -(void)drawLine:(Coordinate*) coordinate {
     if (coordinate.objectType == kHorizontalLine) {
-        NSLog(@"ChooseHorizontal row:%d, column:%d", coordinate.row, coordinate.column);
+//        NSLog(@"ChooseHorizontal row:%d, column:%d", coordinate.row, coordinate.column);
     } else if (coordinate.objectType == kVerticalLine) {
-        NSLog(@"ChooseVertical row:%d, column:%d", coordinate.row, coordinate.column);
+//        NSLog(@"ChooseVertical row:%d, column:%d", coordinate.row, coordinate.column);
     }
     
     
@@ -117,6 +117,8 @@
         ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
         Coordinate* cord = [player2 makeMove];
         [self drawLine:cord];
+        //[NSThread sleepForTimeInterval:0.5];
+        //TODO 
         gameFinish = [self playedMove:cord];
         
     }

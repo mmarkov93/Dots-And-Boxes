@@ -7,12 +7,12 @@
 //
 
 #import "ComputerMedium.h"
-#import "Chain.h"
 #import "Box.h"
+#import "FieldService.h"
 
 @implementation ComputerMedium
 
-@synthesize chainDictionary;
+@synthesize shortChains, longChains;
 
 
 -(id) initWithColor:(NSString *)inColor Name:(NSString *)inName {
@@ -20,13 +20,15 @@
     if (self) {
         color = inColor;
         name = inName;
-        chainDictionary = [[NSMutableDictionary alloc] init];
+        shortChains = [[NSMutableArray alloc] init];
+        longChains = [[NSMutableArray alloc] init];
     }
     return (self);
 }
 
 -(void) dealloc {
-    [chainDictionary release];
+    [shortChains release];
+    [longChains release];
     
     [super dealloc];
 }
@@ -193,8 +195,6 @@
 }
 
 -(BOOL) isBoxInOtherChains:(Coordinate*)coordinate{
-    NSArray *longChains = [chainDictionary objectForKey:kLongChains];
-    NSArray *shortChains = [chainDictionary objectForKey:kShortChains];
     
     for (NSArray *chain in longChains) {
         Coordinate *lastCoordOfChain = [chain lastObject];
@@ -211,13 +211,9 @@
     return true;     
 }
 
--(NSArray*)getAllChains {
-    NSMutableArray *longChanins = [[NSMutableArray alloc] init];
-    NSMutableArray *shortChains = [[NSMutableArray alloc] init];
-    
-    [chainDictionary removeAllObjects];
-    [chainDictionary setObject:longChanins forKey:kLongChains];
-    [chainDictionary setObject:shortChains forKey:kShortChains];
+-(void)getAllChains {
+    [shortChains removeAllObjects];
+    [longChains removeAllObjects];
     
     for (int i=0; i<game.dotsCount - 1; i++) {
         for (int j=0; j<game.dotsCount - 1; j++) {
@@ -230,9 +226,7 @@
                     
                     NSArray *chain = [self getChain:boxCoordinate];
                     if ([chain count] > 2) {
-                        [longChanins addObject:chain];
-                        NSLog(@"Chain");
-                        
+                        [longChains addObject:chain];
                     } else if ([chain count] > 0) {
                         [shortChains addObject:chain];
                     }
@@ -241,21 +235,175 @@
             
             [boxCoordinate release];            
         }
+    }   
+    
+}
+
+-(BOOL)isInLongChain:(Coordinate*) box {
+    for (NSArray *chain in longChains) {
+        for (Coordinate *coord in chain) {
+            if (coord.row == box.row && coord.column == box.column) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+-(void)printChains {
+    for (NSArray *chain in longChains) {
+        NSLog(@"\nLongChain%d",[chain count]);
+        for (Coordinate *cord in chain) {
+            NSLog(@"\nrow:%d column:%d", cord.row, cord.column);
+        }
+    
+    }   
+    
+    for (NSArray *chain in shortChains) {
+        NSLog(@"\nShortChain%d",[chain count]);
+        for (Coordinate *cord in chain) {
+            NSLog(@"\nrow:%d column:%d", cord.row, cord.column);
+        }
+        
+    }
+
+    
+}
+
+-(BOOL)isSingleBox:(Coordinate*) box {
+    for (NSArray *chain in shortChains) {
+        
+        for (Coordinate *coord in chain) {
+            
+            if (coord.row == box.row && coord.column == box.column) {
+                if ([chain count] == 1) {
+                    return YES;
+                }
+                
+            }
+        }
+    }
+    return NO;
+}
+
+-(Coordinate*)getLastMove:(Coordinate*) boxCoordinate andLine:(Coordinate*) line {
+    Box* box = [self getBoxWithRow:boxCoordinate.row andColumn:boxCoordinate.column];
+    
+    if (box.left == 0 && (boxCoordinate.row != line.row || boxCoordinate.column != line.column)) {
+        return [[Coordinate alloc] initWithRow:boxCoordinate.row Column:boxCoordinate.column AndObjectType:kVerticalLine];
     }
     
-    NSLog(@"lChains: %d", [longChanins count]);
-    NSLog(@"sChains: %d", [shortChains count]);
-
-
-     
-    NSLog(@"Long Chains : %d", [[chainDictionary objectForKey:kLongChains] count]);
-    NSLog(@"Short Chains: %d", [[chainDictionary objectForKey:kShortChains] count]);
+    if (box.right == 0 && (boxCoordinate.row != line.row || (boxCoordinate.column + 1 != line.column))) {
+        return [[Coordinate alloc] initWithRow:boxCoordinate.row Column:boxCoordinate.column + 1 AndObjectType:kVerticalLine];
+    }
     
+    if (box.up == 0 && (boxCoordinate.row != line.row || boxCoordinate.column != line.column)) {
+        return [[Coordinate alloc] initWithRow:boxCoordinate.row Column:boxCoordinate.column AndObjectType:kHorizontalLine];
+    }
     
-    return longChanins;
+    if (box.down == 0 && ((boxCoordinate.row + 1 != line.row) || boxCoordinate.column != line.column)) {
+        return [[Coordinate alloc] initWithRow:boxCoordinate.row + 1 Column:boxCoordinate.column AndObjectType:kHorizontalLine];
+    }
+    
+    return nil;
+}
+-(Coordinate*)getBestMove:(NSArray*)boxMoves {
+    FieldService *fieldService = [[FieldService alloc] initWithVerticalLines:game.verticalLines HorizontalLines:game.horizontalLines AndDotsCount:game.dotsCount];
+    
+    Coordinate *lastMove;
+    
+    for (Coordinate *coord in boxMoves) {
+        NSArray *boxes = [fieldService checkForBoxes:coord];
+        if ([boxes count] == 2) {
+            return coord;
+        } else {
+            Coordinate *currBox = [boxes objectAtIndex:0];
+            if ([self isSingleBox:currBox]) {
+                return coord;
+            }
+            
+            if ([self isInLongChain:currBox]) {
+                return coord;
+            }
+            
+            NSLog(@"Short Chains Count:%d", [shortChains count]);
+    
+            if (([shortChains count] % 2) == 0 || [longChains count] == 0 || [boxMoves count] > 1 ) {
+                return coord;
+            } else {
+                NSArray *lastBoxes = [fieldService getBoxesAroundLine:coord];
+                
+                Box *box;
+                for (Coordinate *lastBoxCoordinate in lastBoxes) {
+                    box = [self getBoxWithRow:lastBoxCoordinate.row andColumn:lastBoxCoordinate.column]; 
+                    if ([box getSidesCount] < 3 ) {
+                        lastMove = [self getLastMove:lastBoxCoordinate andLine:coord];
+                        NSLog(@"row:%d, column:%d", lastBoxCoordinate.row, lastBoxCoordinate.column);     
+                        NSLog(@"Left:%d, Right:%d, Up:%d, Down:%d", box.left, box.right, box.up, box.down);                       
+                        break;
+                    }
+                }
+            }
+        }
+       
+    }
+    
+    return lastMove;
+}
+
+-(BOOL)containsOneSegmentChain {
+    for (NSArray *chain in shortChains) {
+        if ([chain count] == 1) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+-(Coordinate*)getCommonSideOFBoxes:(NSArray*) boxes {
+    Coordinate *box1 = [boxes objectAtIndex:0];
+    Coordinate *box2 = [boxes objectAtIndex:1];
+    
+    int row = box1.row - box2.row;
+    int column = box1.column - box2.column;
+    
+    if (column == -1) {
+        return [[Coordinate alloc] initWithRow:box2.row Column:box2.column AndObjectType:kVerticalLine];
+    }
+    if (row == -1) {
+        return [[Coordinate alloc] initWithRow:box2.row Column:box2.column AndObjectType:kHorizontalLine];
+    }
+    
+    return nil;
+}
+
+-(Coordinate*)makeShortChainMove {
+    if ([self containsOneSegmentChain]) {
+        for (NSArray *chain in shortChains) {
+            if ([chain count] == 1) {
+                Coordinate *box = [chain objectAtIndex:0];
+                Coordinate *fakeCoordinate = [[Coordinate alloc] initWithRow:box.row+2 Column:box.row + 2 AndObjectType:kVerticalLine];
+                return [self getLastMove:box andLine:fakeCoordinate];
+            }
+        }
+    }  
+    
+    NSArray *twoBoxes = [shortChains objectAtIndex:0];
+    Coordinate *commonSide = [self getCommonSideOFBoxes:twoBoxes];
+    
+        
+    if (([shortChains count] % 2) == 0) {
+        return [self getLastMove:[twoBoxes objectAtIndex:0] andLine:commonSide];
+    } else {
+        return commonSide; 
+    }
+    return nil;
 }
 
 -(Coordinate*)makeMove {
+    FieldService *fieldService = [[FieldService alloc] initWithVerticalLines:game.verticalLines HorizontalLines:game.horizontalLines AndDotsCount:game.dotsCount];
+    
     [self getAllChains];
     
     NSArray *posibleMoves = [self getPosibleMoves];
@@ -264,25 +412,48 @@
     NSMutableArray *noBoxMoves = [[NSMutableArray alloc] init];
     
     for (Coordinate *line in posibleMoves) {
-        int lines = [self checkForNumberOfLines:line];
+        int lines = [fieldService checkForMaxNumberOfLines:line];
         if (lines == 3) {
             [boxMoves addObject:line];
         } else if (lines < 2){
             [noBoxMoves addObject:line];
-        }
+        }    
     }
-    //NSLog(@"Box Moves:%d", [boxMoves count]);
+    
     if ([boxMoves count] > 0) {
-        int randomBox = arc4random_uniform([boxMoves count]);
-        return [boxMoves objectAtIndex:randomBox];
+        if ([noBoxMoves count] > 0) {
+            int randomBox = arc4random_uniform([boxMoves count]);
+            return [boxMoves objectAtIndex:randomBox];
+        } else {
+            
+            Coordinate *coord = [self getBestMove:boxMoves];
+            if (coord != nil) {
+                return coord;
+            }
+ 
+        }
     } else if ([noBoxMoves count] > 0) {
         int randomNoBox = arc4random_uniform([noBoxMoves count]);
         return [noBoxMoves objectAtIndex:randomNoBox];
     }
     
+    if ([noBoxMoves count] == 0) {
+        if ([shortChains count] > 0) {
+            NSLog(@"Put on short Chain");
+            Coordinate* lastMove = [self makeShortChainMove];
+            if (lastMove == nil) {
+                NSLog(@"NIL");
+            } else {
+                NSLog(@"LastMove row:%d column:%d",lastMove.row, lastMove.column);
+                return lastMove;
+            }
+        }
+    }
+    
     int random = arc4random_uniform([posibleMoves count]);
     
     
+    [fieldService release];
     return [posibleMoves objectAtIndex:random];
     
 }

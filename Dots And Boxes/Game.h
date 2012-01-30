@@ -29,9 +29,8 @@
 @property (nonatomic, retain) Player *currentPlayer;
 @property int dotsCount;
 
--(NSArray*)checkForBoxes:(Coordinate*) coordinate;
--(void)putBoxes:(NSArray*) boxes;
+-(id) initWithBoxCount:(int) boxCount;-(void)putBoxes:(NSArray*) boxes;
 -(void)changeCurrentPlayer;
--(id) initWithBoxCount:(int) boxCount;
+-(NSArray*)checkForBoxes:(Coordinate*) coordinate;
 
 @end

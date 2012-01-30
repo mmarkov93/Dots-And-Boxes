@@ -23,4 +23,23 @@
     return (self);
 }
 
+/*
+-(BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+    
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+    
+    Coordinate *coord = (Coordinate*) object;
+    
+    if (row == coord.row && column == coord.column &&  objectType == coord.objectType) {
+        return YES;
+    }
+    
+    return NO;
+}    */    
+
 @end
