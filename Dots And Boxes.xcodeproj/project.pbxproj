@@ -13,6 +13,7 @@
 		BA0942BC14D93F86003E0CD6 /* TwoPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA0942BB14D93F86003E0CD6 /* TwoPlayersViewController.m */; };
 		BA0942BE14D94220003E0CD6 /* TwoPlayersViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0942BD14D94220003E0CD6 /* TwoPlayersViewController-iPad.xib */; };
 		BA0942C014D962CF003E0CD6 /* GameViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0942BF14D962CC003E0CD6 /* GameViewController-iPad.xib */; };
+		BA0942C214D98304003E0CD6 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0942C114D98302003E0CD6 /* iAd.framework */; };
 		BA0C2C3214C417C100CEFFBA /* Box.m in Sources */ = {isa = PBXBuildFile; fileRef = BA0C2C3114C417C100CEFFBA /* Box.m */; };
 		BA1C18311452CB200045BA23 /* blueHorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA1C18301452CB200045BA23 /* blueHorizontalLine.png */; };
 		BA6A8243146EFBA40002B579 /* redHorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6A8242146EFBA40002B579 /* redHorizontalLine.png */; };
@@ -56,6 +57,7 @@
 		BA0942BB14D93F86003E0CD6 /* TwoPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoPlayersViewController.m; sourceTree = "<group>"; };
 		BA0942BD14D94220003E0CD6 /* TwoPlayersViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "TwoPlayersViewController-iPad.xib"; sourceTree = "<group>"; };
 		BA0942BF14D962CC003E0CD6 /* GameViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController-iPad.xib"; sourceTree = "<group>"; };
+		BA0942C114D98302003E0CD6 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		BA0C2C3014C417C100CEFFBA /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
 		BA0C2C3114C417C100CEFFBA /* Box.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Box.m; sourceTree = "<group>"; };
 		BA1C18301452CB200045BA23 /* blueHorizontalLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueHorizontalLine.png; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0942C214D98304003E0CD6 /* iAd.framework in Frameworks */,
 				BAA9AE23144B034D0029D4A6 /* UIKit.framework in Frameworks */,
 				BAA9AE25144B034D0029D4A6 /* Foundation.framework in Frameworks */,
 				BAA9AE27144B034D0029D4A6 /* CoreGraphics.framework in Frameworks */,
@@ -144,6 +147,7 @@
 		BAA9AE21144B034D0029D4A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA0942C114D98302003E0CD6 /* iAd.framework */,
 				BAA9AE22144B034D0029D4A6 /* UIKit.framework */,
 				BAA9AE24144B034D0029D4A6 /* Foundation.framework */,
 				BAA9AE26144B034D0029D4A6 /* CoreGraphics.framework */,

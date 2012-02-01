@@ -15,9 +15,11 @@
 
 @implementation GameViewController
 
+@synthesize bannerIsVisible;
 @synthesize game;
 @synthesize lineLength, dotSize, fieldSize;
 @synthesize verticalButtons, horizontalButtons;
+@synthesize backButton;
 
 @synthesize player1ScoreLabel, player2ScoreLabel, currentPlayerLabel;
 
@@ -241,6 +243,9 @@
 
 - (void)dealloc
 {
+    adView.delegate = nil;
+    [adView release];
+    
     [super dealloc];
 }
 
@@ -261,20 +266,27 @@
     
     if (UI_USER_INTERFACE_IDIOM()) {
         fieldSize = fieldSizeIPad;
+        dotSize = (dotSizeIPad/dotsCount) * 3;
     } else {
         fieldSize = fieldSizeIPhone;
+        dotSize = (dotSizeIPhone/dotsCount) * 3;
     }
-    dotSize = 15 - dotsCount;        
+            
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
     [self createDotsAndLines];
 }
 
 - (void)viewDidLoad
 {
+    adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+    adView.frame = CGRectOffset(adView.frame, 0, -50);
+    adView.requiredContentSizeIdentifiers = [NSSet  setWithObject:ADBannerContentSizeIdentifierPortrait];
+    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+    [self.view addSubview:adView];
+    adView.delegate = self;
+    self.bannerIsVisible = NO;
+    
     [super viewDidLoad];
-    
-        
-    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -289,6 +301,33 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark AdBanerViewDelegate Methods
+
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    if (!self.bannerIsVisible) {
+        [UIView beginAnimations:@"animatedAdBannerOn" context:NULL];
+        banner.frame = CGRectOffset(adView.frame, 0, 50);
+        if (UI_USER_INTERFACE_IDIOM()) {
+            backButton.frame = CGRectOffset(backButton.frame, 0, 66);
+        } else {
+            backButton.frame = CGRectOffset(backButton.frame, 0, 50);
+        }
+        
+        [UIView commitAnimations];
+        self.bannerIsVisible = YES;
+    }
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    if (self.bannerIsVisible) {
+        [UIView beginAnimations:@"animatedAdBannerOff" context:NULL];
+        banner.frame = CGRectOffset(adView.frame, 0, -50);
+        backButton.frame = CGRectOffset(backButton.frame, 0, 0);
+        [UIView commitAnimations];
+        self.bannerIsVisible = NO;
+    }
 }
 
 @end
