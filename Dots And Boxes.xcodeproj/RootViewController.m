@@ -9,32 +9,32 @@
 #import "RootViewController.h"
 #import "OnePlayerViewController.h"
 #import "TwoPlayersViewController.h"
-#import "RulesViewController.h"
+
 
 
 @implementation RootViewController
 
 -(IBAction)onePlayerButtonPressed {
-    OnePlayerViewController *onePlayerController = [[OnePlayerViewController alloc] initWithNibName:@"OnePlayerViewController" bundle:nil];
-    [self.navigationController pushViewController:onePlayerController animated:YES];
-    
+    OnePlayerViewController *onePlayerController = nil;
+    if (UI_USER_INTERFACE_IDIOM()) {
+        onePlayerController = [[OnePlayerViewController alloc] initWithNibName:@"OnePlayerViewController-iPad" bundle:nil];
+    } else {
+        onePlayerController = [[OnePlayerViewController alloc] initWithNibName:@"OnePlayerViewController" bundle:nil];
+    }
+    [self.navigationController pushViewController:onePlayerController animated:YES];    
     [onePlayerController release];
 }
 
 -(IBAction)twoPlayerButtonPressed {
-    TwoPlayersViewController *twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:@"TwoPlayersViewController" bundle:nil];
-    [self.navigationController pushViewController:twoPlayersController animated:YES];
-    
-    [twoPlayersController release];
-    
+    TwoPlayersViewController *twoPlayersController = nil;
+    if (UI_USER_INTERFACE_IDIOM()) {
+        twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:@"TwoPlayersViewController-iPad" bundle:nil];
+    } else {
+        twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:@"TwoPlayersViewController" bundle:nil];
+    }
+     [self.navigationController pushViewController:twoPlayersController animated:YES];    [twoPlayersController release];    
 }
 
--(IBAction)rulesButtonPressed {
-    RulesViewController *rulesController = [[RulesViewController alloc] initWithNibName:@"RulesViewController" bundle:nil];
-    [self.navigationController pushViewController:rulesController animated:YES];
-    
-    [rulesController release];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

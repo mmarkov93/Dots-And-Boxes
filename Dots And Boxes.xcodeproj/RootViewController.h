@@ -14,7 +14,5 @@
 
 -(IBAction)onePlayerButtonPressed;
 -(IBAction)twoPlayerButtonPressed;
--(IBAction)rulesButtonPressed;
-
 
 @end

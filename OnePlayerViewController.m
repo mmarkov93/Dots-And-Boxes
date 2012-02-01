@@ -22,8 +22,12 @@
 
 -(IBAction)startButtonPressed {
     
-    
-    GameViewController *gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+    GameViewController *gameController = nil;
+    if (UI_USER_INTERFACE_IDIOM()) {
+        gameController = [[GameViewController alloc] initWithNibName:@"GameViewController-iPad" bundle:nil];
+    } else {
+        gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];    
+    }
     
     gameController.game = [[Game alloc] initWithBoxCount:chooseFieldController.chosenIndex];
     

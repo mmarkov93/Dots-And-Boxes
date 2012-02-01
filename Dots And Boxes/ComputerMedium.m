@@ -311,6 +311,7 @@
     FieldService *fieldService = [[FieldService alloc] initWithVerticalLines:game.verticalLines HorizontalLines:game.horizontalLines AndDotsCount:game.dotsCount];
     
     Coordinate *lastMove;
+    BOOL shortChainMove = YES;
     
     for (Coordinate *coord in boxMoves) {
         NSArray *boxes = [fieldService checkForBoxes:coord];
@@ -326,11 +327,12 @@
                 return coord;
             }
             
-            NSLog(@"Short Chains Count:%d", [shortChains count]);
+           // NSLog(@"Short Chains Count:%d", [shortChains count]);
     
-            if (([shortChains count] % 2) == 0 || [longChains count] == 0 || [boxMoves count] > 1 ) {
-                return coord;
-            } else {
+            if (([shortChains count] % 2) == 0 || ([longChains count] == 0 || [boxMoves count] > 1 )) {
+                lastMove = coord;
+                shortChainMove = NO;
+            } else if(shortChainMove){
                 NSArray *lastBoxes = [fieldService getBoxesAroundLine:coord];
                 
                 Box *box;
@@ -338,8 +340,8 @@
                     box = [self getBoxWithRow:lastBoxCoordinate.row andColumn:lastBoxCoordinate.column]; 
                     if ([box getSidesCount] < 3 ) {
                         lastMove = [self getLastMove:lastBoxCoordinate andLine:coord];
-                        NSLog(@"row:%d, column:%d", lastBoxCoordinate.row, lastBoxCoordinate.column);     
-                        NSLog(@"Left:%d, Right:%d, Up:%d, Down:%d", box.left, box.right, box.up, box.down);                       
+                        //NSLog(@"row:%d, column:%d", lastBoxCoordinate.row, lastBoxCoordinate.column);     
+                       // NSLog(@"Left:%d, Right:%d, Up:%d, Down:%d", box.left, box.right, box.up, box.down);                       
                         break;
                     }
                 }
@@ -439,12 +441,12 @@
     
     if ([noBoxMoves count] == 0) {
         if ([shortChains count] > 0) {
-            NSLog(@"Put on short Chain");
+            //NSLog(@"Put on short Chain");
             Coordinate* lastMove = [self makeShortChainMove];
             if (lastMove == nil) {
-                NSLog(@"NIL");
+              //  NSLog(@"NIL");
             } else {
-                NSLog(@"LastMove row:%d column:%d",lastMove.row, lastMove.column);
+                //NSLog(@"LastMove row:%d column:%d",lastMove.row, lastMove.column);
                 return lastMove;
             }
         }

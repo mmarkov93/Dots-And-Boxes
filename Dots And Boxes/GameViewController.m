@@ -16,7 +16,7 @@
 @implementation GameViewController
 
 @synthesize game;
-@synthesize lineLength, dotSize;
+@synthesize lineLength, dotSize, fieldSize;
 @synthesize verticalButtons, horizontalButtons;
 
 @synthesize player1ScoreLabel, player2ScoreLabel, currentPlayerLabel;
@@ -116,6 +116,11 @@
     while([game.currentPlayer isKindOfClass:[ComputerEasy class]] && gameFinish) {
         ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
         Coordinate* cord = [player2 makeMove];
+        if (cord.objectType == kHorizontalLine) {
+            NSLog(@"HorizontalLine row:%d column:%d", cord.row, cord.column);
+        } else if(cord.objectType == kVerticalLine) {
+            NSLog(@"VerticalLine row:%d column:%d", cord.row, cord.column);        
+        }
         [self drawLine:cord];
         //[NSThread sleepForTimeInterval:0.5];
         //TODO 
@@ -172,7 +177,12 @@
     [self.view addSubview:button];
 }
 
--(void)createDotsAndLines {    
+-(void)createDotsAndLines { 
+    
+    NSLog(@"Width:%f",CGRectGetWidth(self.view.bounds));
+    NSLog(@"Height:%f",CGRectGetHeight(self.view.bounds));    
+    NSLog(@"Width:%f", self.view.frame.size.width);
+    
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
@@ -244,15 +254,27 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     int dotsCount = [game dotsCount];
-    NSLog(@"%d", dotsCount);
-    dotSize = 15 - dotsCount;
+    
+    if (UI_USER_INTERFACE_IDIOM()) {
+        fieldSize = fieldSizeIPad;
+    } else {
+        fieldSize = fieldSizeIPhone;
+    }
+    dotSize = 15 - dotsCount;        
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
     [self createDotsAndLines];
-    
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
+        
+    
     // Do any additional setup after loading the view from its nib.
 }
 
