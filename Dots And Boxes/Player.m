@@ -33,7 +33,7 @@
 }
 
 -(UIImage*)getPlayerVerticalLineImage {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"%@HorizontalLine.png", color]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@VerticalLine.png", color]];
 }
 
 @end

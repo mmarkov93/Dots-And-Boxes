@@ -424,7 +424,7 @@
     
     if ([boxMoves count] > 0) {
         if ([noBoxMoves count] > 0) {
-            int randomBox = arc4random_uniform([boxMoves count]);
+            int randomBox = arc4random() % ([boxMoves count]);
             return [boxMoves objectAtIndex:randomBox];
         } else {
             
@@ -435,7 +435,7 @@
  
         }
     } else if ([noBoxMoves count] > 0) {
-        int randomNoBox = arc4random_uniform([noBoxMoves count]);
+        int randomNoBox = arc4random() % ([noBoxMoves count]);
         return [noBoxMoves objectAtIndex:randomNoBox];
     }
     
@@ -452,7 +452,7 @@
         }
     }
     
-    int random = arc4random_uniform([posibleMoves count]);
+    int random = arc4random() % ([posibleMoves count]);
     
     
     [fieldService release];

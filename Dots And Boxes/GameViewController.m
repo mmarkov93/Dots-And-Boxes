@@ -49,20 +49,19 @@
 }
 
 -(void)drawLine:(Coordinate*) coordinate {
-    if (coordinate.objectType == kHorizontalLine) {
-//        NSLog(@"ChooseHorizontal row:%d, column:%d", coordinate.row, coordinate.column);
-    } else if (coordinate.objectType == kVerticalLine) {
-//        NSLog(@"ChooseVertical row:%d, column:%d", coordinate.row, coordinate.column);
-    }
-    
     
     int tag = coordinate.row*100 + coordinate.column*10 + 1;
     if (coordinate.objectType == kVerticalLine) {
         tag += 1;
     }
     
-    UIButton *button = (UIButton*)[self.view viewWithTag:tag];
-    [button setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+    LineButton *button = (LineButton*)[self.view viewWithTag:tag];
+    if (button.coordinate.objectType ==  kHorizontalLine) {
+        [button setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+    } else {
+        [button setBackgroundImage:[game.currentPlayer getPlayerVerticalLineImage] forState:UIControlStateDisabled];
+    }
+    
     button.enabled = false;
 }
 
@@ -109,7 +108,13 @@
 
 -(void)touchUpInside:(id)sender {
     LineButton *currentButton = (LineButton*) sender;
-    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+    
+    if (currentButton.coordinate.objectType == kHorizontalLine) {
+        [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateDisabled];
+    } else {
+        [currentButton setBackgroundImage:[game.currentPlayer getPlayerVerticalLineImage] forState:UIControlStateDisabled];
+    }
+   
     currentButton.enabled = false;
     Coordinate *currentCord = [currentButton coordinate];
     [self playedMove:currentCord];
@@ -139,15 +144,14 @@
 
 -(void)touchDown:(id)sender {
     
-    UIButton *currentButton = (UIButton*) sender;
-    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage]forState:UIControlStateNormal];
-    //    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
-}
+    LineButton *currentButton = (LineButton*) sender;
+    if (currentButton.coordinate.objectType == kHorizontalLine) {
+        [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateNormal];
+    } else {
+        [currentButton setBackgroundImage:[game.currentPlayer getPlayerVerticalLineImage] forState:UIControlStateNormal];
+    }
 
--(void)dragInside:(id)sender {
-    UIButton *currentButton = (UIButton*) sender;
-    [currentButton setBackgroundImage:[game.currentPlayer getPlayerHorizontalLineImage] forState:UIControlStateNormal];
-    NSLog(@"DragInside :%@", [[sender titleLabel] text]);
+    //    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
 }
 
 -(void)dragOutside:(id)sender {
@@ -172,7 +176,6 @@
     
     [button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [button addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
-    [button addTarget:self action:@selector(dragInside:) forControlEvents:UIControlEventTouchDragInside];
     [button addTarget:self action:@selector(dragOutside:) forControlEvents:UIControlEventTouchDragOutside];
     
     button.frame = rect;
@@ -188,7 +191,7 @@
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
-    UIImage *dotImage = [UIImage imageNamed:@"Dot.png"];
+    UIImage *dotImage = [UIImage imageNamed:@"dot.png"];
     
     //    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
     
@@ -266,13 +269,15 @@
     
     if (UI_USER_INTERFACE_IDIOM()) {
         fieldSize = fieldSizeIPad;
-        dotSize = (dotSizeIPad/dotsCount) * 3;
+        dotSize = (dotSizeIPad/dotsCount) * 4;
     } else {
         fieldSize = fieldSizeIPhone;
-        dotSize = (dotSizeIPhone/dotsCount) * 3;
+        dotSize = (dotSizeIPhone/dotsCount) * 4;
     }
             
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
+    NSLog(@"LineLength:%d", lineLength);
+    NSLog(@"DotSize:%d", dotSize);
     [self createDotsAndLines];
 }
 
