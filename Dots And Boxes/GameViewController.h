@@ -26,11 +26,15 @@
     BOOL banerIsVisible;
     
     UIButton *backButton;
-    UILabel *player1ScoreLabel;
-    UILabel *player2ScoreLabel;
-    UILabel *currentPlayerLabel;
-    NSMutableArray *horizontalButtons;
-    NSMutableArray *verticalButtons;
+      
+    UIImageView *player2Image;
+    UIImageView *p1Units;
+    UIImageView *p1Tens;
+    UIImageView *p2Units;
+    UIImageView *p2Tens;
+    
+    UIImageView *p1Arrow;
+    UIImageView *p2Arrow;
 }
 
 @property (nonatomic, assign) BOOL bannerIsVisible;
@@ -41,11 +45,15 @@
 @property int fieldSize;
 
 @property (nonatomic, retain) IBOutlet UIButton *backButton;
-@property (nonatomic, retain) IBOutlet UILabel *player1ScoreLabel;
-@property (nonatomic, retain) IBOutlet UILabel *player2ScoreLabel;
-@property (nonatomic, retain) IBOutlet UILabel *currentPlayerLabel;
-@property (nonatomic, retain) NSMutableArray *horizontalButtons;
-@property (nonatomic, retain) NSMutableArray *verticalButtons;
+
+@property (nonatomic, retain) IBOutlet UIImageView *player2Image;
+@property (nonatomic, retain) IBOutlet UIImageView *p1Units;
+@property (nonatomic, retain) IBOutlet UIImageView *p1Tens;
+@property (nonatomic, retain) IBOutlet UIImageView *p2Units;
+@property (nonatomic, retain) IBOutlet UIImageView *p2Tens;
+
+@property (nonatomic, retain) IBOutlet UIImageView *p1Arrow;
+@property (nonatomic, retain) IBOutlet UIImageView *p2Arrow;
 
 -(IBAction)backButtonPressed;
 

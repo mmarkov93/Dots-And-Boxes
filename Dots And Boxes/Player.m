@@ -36,4 +36,11 @@
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@VerticalLine.png", color]];
 }
 
+-(void) dealloc {
+    [name release];
+    [color release];
+    
+    [super dealloc];
+}
+
 @end

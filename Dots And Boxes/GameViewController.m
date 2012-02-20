@@ -11,6 +11,7 @@
 #import "Game.h"
 #import "Coordinate.h"
 #import "ComputerEasy.h"
+#import "ComputerMedium.h"
 
 
 @implementation GameViewController
@@ -18,10 +19,10 @@
 @synthesize bannerIsVisible;
 @synthesize game;
 @synthesize lineLength, dotSize, fieldSize;
-@synthesize verticalButtons, horizontalButtons;
 @synthesize backButton;
+@synthesize player2Image, p1Units, p1Tens, p2Units, p2Tens;
 
-@synthesize player1ScoreLabel, player2ScoreLabel, currentPlayerLabel;
+@synthesize p1Arrow, p2Arrow;
 
 -(void)drawSqaresWithCoordinates:(NSArray*) coordinates {
     //UIImage *sqareImage = [UIImage imageNamed:@"BlueSquare.png"];
@@ -43,9 +44,25 @@
 }
 
 -(void)updateView {
-    player1ScoreLabel.text = [NSString stringWithFormat:@"%d",game.player1.boxesCount];
-    player2ScoreLabel.text = [NSString stringWithFormat:@"%d",game.player2.boxesCount];
-    currentPlayerLabel.text = game.currentPlayer.name;
+    int p1UnitsInt = game.player1.boxesCount % 10;
+    int p1TensInt = game.player1.boxesCount / 10;
+    int p2UnitsInt = game.player2.boxesCount % 10;
+    int p2TensInt = game.player2.boxesCount / 10;
+    
+    NSString *iPad = @"";
+    if (UI_USER_INTERFACE_IDIOM()) {
+        iPad = [NSString stringWithFormat:@"%@", @"-iPad"];
+    }
+    
+    NSString *p1UnitsString = [NSString stringWithFormat:@"blue%d%@.png", p1UnitsInt, iPad];
+    NSString *p1TensString = [NSString stringWithFormat:@"blue%d%@.png",p1TensInt, iPad];
+    NSString *p2UnitsString = [NSString stringWithFormat:@"red%d%@.png", p2UnitsInt, iPad];
+    NSString *p2TensString = [NSString stringWithFormat:@"red%d%@.png",p2TensInt, iPad];
+    
+    p1Units.image = [UIImage imageNamed:p1UnitsString];
+    p1Tens.image = [UIImage imageNamed:p1TensString];
+    p2Units.image = [UIImage imageNamed:p2UnitsString];
+    p2Tens.image = [UIImage imageNamed:p2TensString];    
 }
 
 -(void)drawLine:(Coordinate*) coordinate {
@@ -80,7 +97,23 @@
         game.currentPlayer.boxesCount +=[boxes count];
         [self drawSqaresWithCoordinates:boxes];
     } else {
+        NSString *iPad = @"";
+        if (UI_USER_INTERFACE_IDIOM()) {
+            iPad = @"-iPad";
+        }
+        
         [game changeCurrentPlayer];
+        if (p1Arrow.image == nil) {
+            
+            NSLog(@"p1arrow nil");
+            p2Arrow.image = nil;
+            p1Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"leftArrow%@.PNG", iPad]]; 
+        } else {
+            NSLog(@"p2arrow nil");
+            p1Arrow.image = nil;
+            p2Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"rightArrow%@.PNG", iPad]]; 
+        }
+        
     }
     
     [self updateView];
@@ -106,6 +139,11 @@
     return true;
 }
 
+-(int)fiveSeconds {
+    NSLog(@"Seconds");
+    return 1;
+}
+
 -(void)touchUpInside:(id)sender {
     LineButton *currentButton = (LineButton*) sender;
     
@@ -120,20 +158,21 @@
     [self playedMove:currentCord];
 
     BOOL gameFinish = true;
+    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:emptyView];
+    
+
     while([game.currentPlayer isKindOfClass:[ComputerEasy class]] && gameFinish) {
         ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
         Coordinate* cord = [player2 makeMove];
-        if (cord.objectType == kHorizontalLine) {
-            NSLog(@"HorizontalLine row:%d column:%d", cord.row, cord.column);
-        } else if(cord.objectType == kVerticalLine) {
-            NSLog(@"VerticalLine row:%d column:%d", cord.row, cord.column);        
-        }
         [self drawLine:cord];
-        //[NSThread sleepForTimeInterval:0.5];
+    
         //TODO 
         gameFinish = [self playedMove:cord];
         
     }
+    [emptyView removeFromSuperview];
+    [emptyView release];
 }
 
 -(void)touchUpOutside:(id)sender {
@@ -183,10 +222,6 @@
 }
 
 -(void)createDotsAndLines { 
-    
-    NSLog(@"Width:%f",CGRectGetWidth(self.view.bounds));
-    NSLog(@"Height:%f",CGRectGetHeight(self.view.bounds));    
-    NSLog(@"Width:%f", self.view.frame.size.width);
     
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
@@ -248,6 +283,7 @@
 {
     adView.delegate = nil;
     [adView release];
+    [game release];
     
     [super dealloc];
 }
@@ -263,9 +299,23 @@
 #pragma mark - View lifecycle
 
 -(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
+    [super viewDidAppear:animated];    
     int dotsCount = [game dotsCount];
+    
+    if ([game.player2 isKindOfClass:[ComputerEasy class]] || [game.player2 isKindOfClass:[ComputerMedium class]]) {
+        if (UI_USER_INTERFACE_IDIOM()) {
+            player2Image.image = [UIImage imageNamed:@"computerImage-iPad.png"];
+        } else {
+            player2Image.image = [UIImage imageNamed:@"computerImage.png"];
+        }
+                
+    } else {
+        if (UI_USER_INTERFACE_IDIOM()) {
+            player2Image.image = [UIImage imageNamed:@"player2Image-iPad.png"];
+        } else {
+            player2Image.image = [UIImage imageNamed:@"player2Image.png"];
+        }
+    }
     
     if (UI_USER_INTERFACE_IDIOM()) {
         fieldSize = fieldSizeIPad;

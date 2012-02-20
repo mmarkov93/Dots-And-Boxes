@@ -13,4 +13,10 @@
 
 @synthesize coordinate;
 
+-(void) dealloc {
+    [coordinate release];
+    
+    [super dealloc];
+}
+
 @end

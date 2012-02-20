@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Dots And Boxes/GameViewController.m"
-         timestampString = "350856505.210154"
+         timestampString = "351450075.630094"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "165"
-         endingLineNumber = "165"
+         startingLineNumber = "204"
+         endingLineNumber = "204"
          landmarkName = "-addLineButtonWithFrame:coordinate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Dots And Boxes/GameViewController.m"
-         timestampString = "350491763.167278"
+         timestampString = "351450075.630094"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "136"
-         endingLineNumber = "136"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
          landmarkName = "-touchUpInside:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,6 +71,20 @@
          startingLineNumber = "330"
          endingLineNumber = "330"
          landmarkName = "-getBestMove:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Dots And Boxes/GameViewController.m"
+         timestampString = "351450075.630094"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "178"
+         endingLineNumber = "178"
+         landmarkName = "-touchUpOutside:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

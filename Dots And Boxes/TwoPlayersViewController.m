@@ -53,6 +53,8 @@
 
 - (void)dealloc
 {
+    [chooseFieldController release];
+    
     [super dealloc];
 }
 
@@ -70,10 +72,16 @@
 {
     [super viewDidLoad];
     
-    chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
-    chooseFieldController.view.frame = CGRectMake(0, 50, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
-    [self.view
-     addSubview:chooseFieldController.view];
+    if (UI_USER_INTERFACE_IDIOM()) {
+        chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController-iPad" bundle:nil];
+        chooseFieldController.view.frame = CGRectMake(118, 0, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+        [self.view addSubview:chooseFieldController.view];
+    } else {
+        chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
+        chooseFieldController.view.frame = CGRectMake(50, 11, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+        [self.view addSubview:chooseFieldController.view]; 
+    }
+    
 }
 
 - (void)viewDidUnload

@@ -32,7 +32,7 @@
     } else {
         twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:@"TwoPlayersViewController" bundle:nil];
     }
-     [self.navigationController pushViewController:twoPlayersController animated:YES];    [twoPlayersController release];    
+    [self.navigationController pushViewController:twoPlayersController animated:YES];[twoPlayersController release];    
 }
 
 

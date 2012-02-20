@@ -69,6 +69,9 @@
 
 - (void)dealloc
 {
+    [chooseFieldController release];
+    [chooseComputerController release];
+    
     [super dealloc];
 }
 
@@ -84,18 +87,34 @@
 
 - (void)viewDidLoad
 {
-    chooseComputerController = [[ChooseComputerController alloc] initWithNibName:@"ChooseComputerController" bundle:nil];
-    int width = chooseComputerController.view.frame.size.width;
-    int height = chooseComputerController.view.frame.size.height;
-    int marginTop = 50;
     
-    chooseComputerController.view.frame = CGRectMake(0, marginTop, width, height);
-
-    chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
-    chooseFieldController.view.frame = CGRectMake(0, 50 + height + 20, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+    if (UI_USER_INTERFACE_IDIOM()) {
+        NSLog(@"IPAD");
+        chooseComputerController = [[ChooseComputerController alloc] initWithNibName:@"ChooseComputerController-iPad" bundle:nil];
+        int width = chooseComputerController.view.frame.size.width;
+        int height = chooseComputerController.view.frame.size.height;
+        
+        chooseComputerController.view.frame = CGRectMake(118, 0, width, height);
+        
+        chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController-iPad" bundle:nil];
+        chooseFieldController.view.frame = CGRectMake(118, height + 18, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+        
+        [self.view addSubview:chooseFieldController.view];   
+        [self.view addSubview:chooseComputerController.view];
+    } else {
+        chooseComputerController = [[ChooseComputerController alloc] initWithNibName:@"ChooseComputerController" bundle:nil];
+        int width = chooseComputerController.view.frame.size.width;
+        int height = chooseComputerController.view.frame.size.height;
+        
+        chooseComputerController.view.frame = CGRectMake(50, 0, width, height);
+        
+        chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
+        chooseFieldController.view.frame = CGRectMake(50, height + 5, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
+        
+        [self.view addSubview:chooseFieldController.view];    
+        [self.view addSubview:chooseComputerController.view];
+    }
     
-    [self.view addSubview:chooseFieldController.view];    
-    [self.view addSubview:chooseComputerController.view];
     
     
     

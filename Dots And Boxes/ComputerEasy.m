@@ -86,4 +86,9 @@
     return [posibleMoves objectAtIndex:random];
 }
 
+-(void) dealloc {
+    [game release];
+    [super dealloc];
+}
+
 @end

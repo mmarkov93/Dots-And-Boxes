@@ -76,4 +76,12 @@
     }
 }
 
+-(void) dealloc {
+    [player1 release];
+    [player2 release];
+    [currentPlayer release];
+    
+    [super dealloc];
+}
+
 @end
