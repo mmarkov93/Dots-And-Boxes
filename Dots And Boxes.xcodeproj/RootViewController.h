@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
+#define kInAppPurchaseManagerProductFetchedNotification @"kInAppPurchaseManagerProductFetchedNotification"
 
-@interface RootViewController : UIViewController {
+@interface RootViewController : UIViewController<SKProductsRequestDelegate> {
+    SKProduct *removeAdsProduct;
+    SKProductsRequest *productRequest;
 }
 
 -(IBAction)onePlayerButtonPressed;
 -(IBAction)twoPlayerButtonPressed;
+-(void) requestRemoveAdsData;
 
 @end

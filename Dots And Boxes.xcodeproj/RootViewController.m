@@ -78,4 +78,32 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)requestRemoveAdsData {
+    NSSet *productIdentifiers = [NSSet setWithObject:@"removeAds"];
+    productRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
+    productRequest.delegate = self;
+    [productRequest start];
+}
+
+#pragma mark -
+#pragma mark SKProductRequestDelegate methods
+-(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    NSArray *products = response.products;
+    removeAdsProduct = [products count] == 1 ? [[products lastObject] retain] : nil;
+    
+    if (removeAdsProduct) {
+        NSLog(@"Price %@", removeAdsProduct.price);
+        NSLog(@"Identifier %@", removeAdsProduct.productIdentifier);
+    }
+    
+    for (NSString *invalidProductID in response.invalidProductIdentifiers) {
+        NSLog(@"Invalid priduct id: %@", invalidProductID);
+    }
+    
+    [productRequest release];
+    [[NSNotificationCenter defaultCenter] postNotification:kInAppPurchaseManagerProductFetchedNotification];
+    
+}
+
+
 @end

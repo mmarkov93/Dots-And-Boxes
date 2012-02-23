@@ -21,6 +21,9 @@
     int lineLength;
     int dotSize;
     int fieldSize;
+    NSTimer *computerTimer;
+    
+    UIView *emptyView;
     
     ADBannerView *adView;
     BOOL banerIsVisible;

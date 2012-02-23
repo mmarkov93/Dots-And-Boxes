@@ -104,12 +104,10 @@
         
         [game changeCurrentPlayer];
         if (p1Arrow.image == nil) {
-            
-            NSLog(@"p1arrow nil");
+
             p2Arrow.image = nil;
             p1Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"leftArrow%@.PNG", iPad]]; 
         } else {
-            NSLog(@"p2arrow nil");
             p1Arrow.image = nil;
             p2Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"rightArrow%@.PNG", iPad]]; 
         }
@@ -139,9 +137,19 @@
     return true;
 }
 
--(int)fiveSeconds {
-    NSLog(@"Seconds");
-    return 1;
+-(void)computerMakeMove {
+    ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
+    Coordinate* cord = [player2 makeMove];
+    [self drawLine:cord];
+    
+    BOOL isNotLastMove = [self playedMove:cord];
+    if (![game.currentPlayer isKindOfClass:[ComputerEasy class]] || !isNotLastMove) {
+        [computerTimer invalidate];
+        computerTimer = nil;
+        
+        [emptyView removeFromSuperview];
+    }
+
 }
 
 -(void)touchUpInside:(id)sender {
@@ -157,29 +165,15 @@
     Coordinate *currentCord = [currentButton coordinate];
     [self playedMove:currentCord];
 
-    BOOL gameFinish = true;
-    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.view addSubview:emptyView];
-    
-
-    while([game.currentPlayer isKindOfClass:[ComputerEasy class]] && gameFinish) {
-        ComputerEasy *player2 = (ComputerEasy*) game.currentPlayer;
-        Coordinate* cord = [player2 makeMove];
-        [self drawLine:cord];
-    
-        //TODO 
-        gameFinish = [self playedMove:cord];
-        
+       if ([game.currentPlayer isKindOfClass:[ComputerEasy class]]) {
+        emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+           emptyView.backgroundColor = [UIColor clearColor];
+            [self.view addSubview:emptyView];
+           
+        computerTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(fiveSeconds) userInfo:nil repeats:YES];
     }
-    [emptyView removeFromSuperview];
-    [emptyView release];
+
 }
-
--(void)touchUpOutside:(id)sender {
-    NSLog(@"TouchUpOutside :%@", [[sender titleLabel] text]);
-}
-
-
 
 -(void)touchDown:(id)sender {
     
@@ -191,12 +185,6 @@
     }
 
     //    NSLog(@"TouchDown :%@", [[sender titleLabel] text]);
-}
-
--(void)dragOutside:(id)sender {
-    UIButton *currentButton = (UIButton*) sender;
-    [currentButton setBackgroundImage:nil forState:UIControlStateNormal];
-    NSLog(@"DragOutside :%@", [[sender titleLabel] text]);
 }
 
 -(void)addLineButtonWithFrame:(CGRect) rect coordinate:(Coordinate*) coordinate {
@@ -215,7 +203,6 @@
     
     [button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [button addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
-    [button addTarget:self action:@selector(dragOutside:) forControlEvents:UIControlEventTouchDragOutside];
     
     button.frame = rect;
     [self.view addSubview:button];
@@ -227,8 +214,6 @@
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
     UIImage *dotImage = [UIImage imageNamed:@"dot.png"];
-    
-    //    double lineImageSizeRatio = lineImage.size.width/lineImage.size.height;
     
     int dotsCount = [game dotsCount];
     
@@ -326,8 +311,7 @@
     }
             
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
-    NSLog(@"LineLength:%d", lineLength);
-    NSLog(@"DotSize:%d", dotSize);
+ 
     [self createDotsAndLines];
 }
 
