@@ -15,23 +15,15 @@
 @implementation RootViewController
 
 -(IBAction)onePlayerButtonPressed {
-    OnePlayerViewController *onePlayerController = nil;
-    if (UI_USER_INTERFACE_IDIOM()) {
-        onePlayerController = [[OnePlayerViewController alloc] initWithNibName:@"OnePlayerViewController-iPad" bundle:nil];
-    } else {
-        onePlayerController = [[OnePlayerViewController alloc] initWithNibName:@"OnePlayerViewController" bundle:nil];
-    }
+    OnePlayerViewController *onePlayerController = [[OnePlayerViewController alloc] initWithNibName:[NSString stringWithFormat:@"OnePlayerViewController%@", iPadString ] bundle:nil];
+    
     [self.navigationController pushViewController:onePlayerController animated:YES];    
     [onePlayerController release];
 }
 
 -(IBAction)twoPlayerButtonPressed {
-    TwoPlayersViewController *twoPlayersController = nil;
-    if (UI_USER_INTERFACE_IDIOM()) {
-        twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:@"TwoPlayersViewController-iPad" bundle:nil];
-    } else {
-        twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:@"TwoPlayersViewController" bundle:nil];
-    }
+    TwoPlayersViewController *twoPlayersController = twoPlayersController = [[TwoPlayersViewController alloc] initWithNibName:[NSString stringWithFormat:@"TwoPlayersViewController%@", iPadString] bundle:nil];   
+    
     [self.navigationController pushViewController:twoPlayersController animated:YES];[twoPlayersController release];    
 }
 
@@ -76,33 +68,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
--(void)requestRemoveAdsData {
-    NSSet *productIdentifiers = [NSSet setWithObject:@"removeAds"];
-    productRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-    productRequest.delegate = self;
-    [productRequest start];
-}
-
-#pragma mark -
-#pragma mark SKProductRequestDelegate methods
--(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    NSArray *products = response.products;
-    removeAdsProduct = [products count] == 1 ? [[products lastObject] retain] : nil;
-    
-    if (removeAdsProduct) {
-        NSLog(@"Price %@", removeAdsProduct.price);
-        NSLog(@"Identifier %@", removeAdsProduct.productIdentifier);
-    }
-    
-    for (NSString *invalidProductID in response.invalidProductIdentifiers) {
-        NSLog(@"Invalid priduct id: %@", invalidProductID);
-    }
-    
-    [productRequest release];
-    [[NSNotificationCenter defaultCenter] postNotification:kInAppPurchaseManagerProductFetchedNotification];
-    
 }
 
 

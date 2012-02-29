@@ -22,12 +22,7 @@
 
 -(IBAction)startButtonPressed {
     
-    GameViewController *gameController = nil;
-    if (UI_USER_INTERFACE_IDIOM()) {
-        gameController = [[GameViewController alloc] initWithNibName:@"GameViewController-iPad" bundle:nil];
-    } else {
-        gameController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];    
-    }
+    GameViewController *gameController = [[GameViewController alloc] initWithNibName:[NSString stringWithFormat:@"GameViewController%@", iPadString] bundle:nil];
     
     gameController.game = [[Game alloc] initWithBoxCount:chooseFieldController.chosenIndex];
     
@@ -41,7 +36,6 @@
             break;
         case 2:
             player2 = [[ComputerMedium alloc] initWithColor:@"red" Name:@"Computer"];
-            //TODO alloc ComputerHard
         default:
             break;
     }
@@ -50,10 +44,11 @@
     gameController.game.player1 = player1;
     gameController.game.player2 = player2;
     gameController.game.currentPlayer = player1;
-    [player1 release];
-    [player2 release];
     
     [self.navigationController pushViewController:gameController animated:YES];
+    
+    [player1 release];
+    [player2 release];
     [gameController release];
     
 }
@@ -87,36 +82,27 @@
 
 - (void)viewDidLoad
 {
+    chooseComputerController = [[ChooseComputerController alloc] initWithNibName:[NSString stringWithFormat:@"ChooseComputerController%@", iPadString] bundle:nil];
+    chooseFieldController = [[ChooseFieldController alloc] initWithNibName:[NSString stringWithFormat:@"ChooseFieldController%@", iPadString] bundle:nil];
     
     if (UI_USER_INTERFACE_IDIOM()) {
-        NSLog(@"IPAD");
-        chooseComputerController = [[ChooseComputerController alloc] initWithNibName:@"ChooseComputerController-iPad" bundle:nil];
         int width = chooseComputerController.view.frame.size.width;
         int height = chooseComputerController.view.frame.size.height;
-        
         chooseComputerController.view.frame = CGRectMake(118, 0, width, height);
         
-        chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController-iPad" bundle:nil];
         chooseFieldController.view.frame = CGRectMake(118, height + 18, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
-        
-        [self.view addSubview:chooseFieldController.view];   
-        [self.view addSubview:chooseComputerController.view];
+
     } else {
-        chooseComputerController = [[ChooseComputerController alloc] initWithNibName:@"ChooseComputerController" bundle:nil];
         int width = chooseComputerController.view.frame.size.width;
         int height = chooseComputerController.view.frame.size.height;
-        
         chooseComputerController.view.frame = CGRectMake(50, 0, width, height);
         
-        chooseFieldController = [[ChooseFieldController alloc] initWithNibName:@"ChooseFieldController" bundle:nil];
         chooseFieldController.view.frame = CGRectMake(50, height + 5, chooseFieldController.view.frame.size.width, chooseFieldController.view.frame.size.height);
         
-        [self.view addSubview:chooseFieldController.view];    
-        [self.view addSubview:chooseComputerController.view];
     }
     
-    
-    
+    [self.view addSubview:chooseFieldController.view];    
+    [self.view addSubview:chooseComputerController.view];
     
     [super viewDidLoad];
 }

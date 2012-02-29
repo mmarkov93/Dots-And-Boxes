@@ -12,13 +12,16 @@
 #import "Coordinate.h"
 #import "ComputerEasy.h"
 #import "ComputerMedium.h"
+#import "WinnerAlertView.h"
+#import "RemoveAdsAlertView.h"
+#import "InAppPurchaseManager.h"
 
 
 @implementation GameViewController
 
 @synthesize bannerIsVisible;
 @synthesize game;
-@synthesize lineLength, dotSize, fieldSize;
+@synthesize lineLength, dotSize;
 @synthesize backButton;
 @synthesize player2Image, p1Units, p1Tens, p2Units, p2Tens;
 
@@ -49,15 +52,11 @@
     int p2UnitsInt = game.player2.boxesCount % 10;
     int p2TensInt = game.player2.boxesCount / 10;
     
-    NSString *iPad = @"";
-    if (UI_USER_INTERFACE_IDIOM()) {
-        iPad = [NSString stringWithFormat:@"%@", @"-iPad"];
-    }
     
-    NSString *p1UnitsString = [NSString stringWithFormat:@"blue%d%@.png", p1UnitsInt, iPad];
-    NSString *p1TensString = [NSString stringWithFormat:@"blue%d%@.png",p1TensInt, iPad];
-    NSString *p2UnitsString = [NSString stringWithFormat:@"red%d%@.png", p2UnitsInt, iPad];
-    NSString *p2TensString = [NSString stringWithFormat:@"red%d%@.png",p2TensInt, iPad];
+    NSString *p1UnitsString = [NSString stringWithFormat:@"blue%d%@.png", p1UnitsInt, iPadString];
+    NSString *p1TensString = [NSString stringWithFormat:@"blue%d%@.png",p1TensInt, iPadString];
+    NSString *p2UnitsString = [NSString stringWithFormat:@"red%d%@.png", p2UnitsInt, iPadString];
+    NSString *p2TensString = [NSString stringWithFormat:@"red%d%@.png",p2TensInt, iPadString];
     
     p1Units.image = [UIImage imageNamed:p1UnitsString];
     p1Tens.image = [UIImage imageNamed:p1TensString];
@@ -82,7 +81,37 @@
     button.enabled = false;
 }
 
+-(void)changePlayers {
+    [game changeCurrentPlayer];
+    if (p1Arrow.image == nil) {
+        
+        p2Arrow.image = nil;
+        p1Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"leftArrow%@.PNG", iPadString]]; 
+    } else {
+        p1Arrow.image = nil;
+        p2Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"rightArrow%@.PNG", iPadString]]; 
+    }
+}
 
+-(void)showEndGameView {
+    WinnerAlertView *winAlert; 
+    
+    NSString *message;
+    if (game.player1.boxesCount == game.player2.boxesCount) {
+        message = kGameIsTie;
+    } else if (game.player1.boxesCount > game.player2.boxesCount) {        
+        message = kPlayer1Wins;
+    } else if ([game.player2 isKindOfClass:[ComputerEasy class]]){
+        message = kComputerWins;
+    } else {
+        message = kPlayer2Wins;
+    }
+    
+    winAlert = [[WinnerAlertView alloc] initWithText:message];
+    [winAlert show];
+    [winAlert release];
+    
+}
 
 - (BOOL)playedMove:(Coordinate *)cord {
     if (cord.objectType == kVerticalLine) {
@@ -97,41 +126,12 @@
         game.currentPlayer.boxesCount +=[boxes count];
         [self drawSqaresWithCoordinates:boxes];
     } else {
-        NSString *iPad = @"";
-        if (UI_USER_INTERFACE_IDIOM()) {
-            iPad = @"-iPad";
-        }
-        
-        [game changeCurrentPlayer];
-        if (p1Arrow.image == nil) {
-
-            p2Arrow.image = nil;
-            p1Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"leftArrow%@.PNG", iPad]]; 
-        } else {
-            p1Arrow.image = nil;
-            p2Arrow.image = [UIImage imageNamed:[NSString stringWithFormat:@"rightArrow%@.PNG", iPad]]; 
-        }
-        
+        [self changePlayers];        
     }
     
     [self updateView];
     if ((game.player1.boxesCount + game.player2.boxesCount) == pow((game.dotsCount-1), 2)) {
-        UIAlertView *winAlert; 
-        NSString *message;
-        NSString *title = @"WIN";
-        
-        if (game.player1.boxesCount == game.player2.boxesCount) {
-            message = @"The game is tie";
-            title = @"TIE";
-        } else if (game.player1.boxesCount > game.player2.boxesCount) {        
-            message = [NSString stringWithFormat:@"%@ wins the game", game.player1.name];
-        } else {
-            message = [NSString stringWithFormat:@"%@ wins the game", game.player2.name];
-        }
-
-        winAlert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];        
-        [winAlert show];
-        [winAlert release];
+        [self showEndGameView];
         return false;
     }
     return true;
@@ -170,7 +170,7 @@
            emptyView.backgroundColor = [UIColor clearColor];
             [self.view addSubview:emptyView];
            
-        computerTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(fiveSeconds) userInfo:nil repeats:YES];
+        computerTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(computerMakeMove) userInfo:nil repeats:YES];
     }
 
 }
@@ -193,10 +193,10 @@
     button.coordinate = coordinate;
     
     if (coordinate.objectType == kHorizontalLine) {
-        [button setBackgroundImage:[UIImage imageNamed:@"blueHorizontLine.png"] forState:UIControlStateDisabled];
+        [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat: @"blueHorizontLine%@.png", iPadString]] forState:UIControlStateDisabled];
         button.tag = coordinate.row * 100 + coordinate.column*10 + 1;
     } else {
-        [button setBackgroundImage:[UIImage imageNamed:@"blueHorizontLine.png"] forState:UIControlStateDisabled];
+        [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat: @"blueHorizontLine%@.png", iPadString]] forState:UIControlStateDisabled];
         button.tag = coordinate.row * 100 + coordinate.column*10 + 2;
     }
     
@@ -213,7 +213,7 @@
     CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2;
     CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2;
     
-    UIImage *dotImage = [UIImage imageNamed:@"dot.png"];
+    UIImage *dotImage = [UIImage imageNamed:[NSString stringWithFormat: @"dot%@.png", iPadString]];
     
     int dotsCount = [game dotsCount];
     
@@ -252,6 +252,17 @@
 }
 
 -(IBAction)backButtonPressed {
+    InAppPurchaseManager *purchaseManager = [[InAppPurchaseManager alloc] init];
+    [purchaseManager loadStore];
+    if ([purchaseManager canMakePurchases]) {
+        RemoveAdsAlertView *removeAds;
+        removeAds = [[RemoveAdsAlertView alloc] initWithTitle:@"Remove Ads?" message:@"Do you want to remove the ads for .99$" delegate:nil cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        removeAds.delegate = removeAds;
+        [removeAds show];
+        [removeAds release];
+    }
+    [purchaseManager release];
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -288,30 +299,19 @@
     int dotsCount = [game dotsCount];
     
     if ([game.player2 isKindOfClass:[ComputerEasy class]] || [game.player2 isKindOfClass:[ComputerMedium class]]) {
-        if (UI_USER_INTERFACE_IDIOM()) {
-            player2Image.image = [UIImage imageNamed:@"computerImage-iPad.png"];
-        } else {
-            player2Image.image = [UIImage imageNamed:@"computerImage.png"];
-        }
-                
+        
+        player2Image.image = [UIImage imageNamed:[NSString stringWithFormat: @"computerImage%@.png", iPadString]];
+        
     } else {
-        if (UI_USER_INTERFACE_IDIOM()) {
-            player2Image.image = [UIImage imageNamed:@"player2Image-iPad.png"];
-        } else {
-            player2Image.image = [UIImage imageNamed:@"player2Image.png"];
-        }
+        
+        player2Image.image = [UIImage imageNamed:[NSString stringWithFormat: @"player2Image%@.png", iPadString]];
+        
     }
+    NSLog(@"dotSizeGame:%d", dotSizeGame);
     
-    if (UI_USER_INTERFACE_IDIOM()) {
-        fieldSize = fieldSizeIPad;
-        dotSize = (dotSizeIPad/dotsCount) * 4;
-    } else {
-        fieldSize = fieldSizeIPhone;
-        dotSize = (dotSizeIPhone/dotsCount) * 4;
-    }
-            
+    dotSize = (dotSizeGame/dotsCount) * 4;
     lineLength = (fieldSize - dotsCount*dotSize)/(dotsCount - 1);
- 
+    
     [self createDotsAndLines];
 }
 

@@ -13,3 +13,5 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+#define iPad        UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+#define iPadString  (iPad ? @"-iPad" : @"")
