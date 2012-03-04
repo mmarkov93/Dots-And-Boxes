@@ -7,15 +7,19 @@
 //
 
 #import "RemoveAdsAlertView.h"
+#import "InAppPurchaseManager.h"
 
 @implementation RemoveAdsAlertView
 
 #pragma mark Alert View Delegate Methods
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        NSLog(@"Button 1");
     } else if (buttonIndex == 1) {
-        NSLog(@"Button 2");
+        InAppPurchaseManager *purchaseManager = [[InAppPurchaseManager alloc] init];
+        [purchaseManager loadStore];
+        if ([purchaseManager canMakePurchases]) {
+            [purchaseManager purchaseProUpgrade];
+        }
     }
 }
 @end

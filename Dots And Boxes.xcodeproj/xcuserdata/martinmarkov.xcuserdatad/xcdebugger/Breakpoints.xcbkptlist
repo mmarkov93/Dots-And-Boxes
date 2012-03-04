@@ -8,26 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Dots And Boxes/GameViewController.m"
-         timestampString = "352213526.032457"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
-         landmarkName = "-addLineButtonWithFrame:coordinate:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Dots And Boxes/ComputerMedium.m"
-         timestampString = "351693550.017544"
+         timestampString = "352546600.802227"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "411"
-         endingLineNumber = "411"
+         startingLineNumber = "419"
+         endingLineNumber = "419"
          landmarkName = "-makeMove"
          landmarkType = "5">
       </FileBreakpoint>

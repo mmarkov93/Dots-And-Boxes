@@ -72,6 +72,7 @@
             if ([self containsTwoOrThreeSides:coord]) {
                 countOfBoxesAround += 1;
             }
+            [coord release];
         } 
         
         if ((coordinate.row < (game.dotsCount - 2)) && (box.down == 0) ) {
@@ -79,6 +80,7 @@
             if ([self containsTwoOrThreeSides:coord]) {
                 countOfBoxesAround += 1;
             }
+            [coord release];
         }
         
         if ((coordinate.column < (game.dotsCount - 2)) && (box.right == 0) ) {
@@ -86,6 +88,7 @@
             if ([self containsTwoOrThreeSides:coord]) {
                 countOfBoxesAround += 1;
             }
+            [coord release];
         }       
         
         if ((coordinate.column > 0) && (box.left == 0) ) {
@@ -93,6 +96,7 @@
             if ([self containsTwoOrThreeSides:coord]) {
                 countOfBoxesAround += 1;
             }
+            [coord release];
         }        
     } else {
         return false;
@@ -135,6 +139,7 @@
                     
                     row = row - 1;
                 } 
+                [coord release];
             } else {
                 posibleSequelChain -= 1;
             }
@@ -148,6 +153,7 @@
                     
                     row = row + 1;
                 } 
+                [coord release];
             } else {
                 posibleSequelChain -= 1;
             }
@@ -161,6 +167,7 @@
                     
                     column = column + 1;
                 } 
+                [coord release];
             } else {
                 posibleSequelChain -= 1;
             }      
@@ -174,6 +181,7 @@
                     
                     column = column - 1;
                 } 
+                [coord release];
             } else {
                 posibleSequelChain -= 1;
             }    
@@ -306,8 +314,8 @@
 }
 -(Coordinate*)getBestMove:(NSArray*)boxMoves {
     FieldService *fieldService = [[FieldService alloc] initWithVerticalLines:game.verticalLines HorizontalLines:game.horizontalLines AndDotsCount:game.dotsCount];
-    
-    Coordinate *lastMove;
+     
+    Coordinate *lastMove = nil;
     BOOL shortChainMove = YES;
     
     for (Coordinate *coord in boxMoves) {

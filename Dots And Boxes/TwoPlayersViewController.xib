@@ -64,7 +64,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">backButton.PNG</string>
+							<string key="NSResourceName">backButton.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="23899509">
 							<string key="name">Helvetica-Bold</string>
@@ -97,7 +97,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="370547070"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">startButton.PNG</string>
+							<string key="NSResourceName">startButton.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="23899509"/>
 						<reference key="IBUIFont" ref="903103838"/>
@@ -239,8 +239,8 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>backButton.PNG</string>
-				<string>startButton.PNG</string>
+				<string>backButton.png</string>
+				<string>startButton.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>

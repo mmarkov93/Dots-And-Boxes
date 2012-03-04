@@ -61,7 +61,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">backButton-iPad.PNG</string>
+							<string key="NSResourceName">backButton-iPad.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
@@ -83,7 +83,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">player1Image-iPad.PNG</string>
+							<string key="NSResourceName">player1Image-iPad.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="867378585">
@@ -103,9 +103,9 @@
 						<reference key="NSNextKeyView" ref="226988538"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage" id="732978142">
+						<object class="NSCustomResource" key="IBUIImage" id="755203499">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">blue0-iPad.PNG</string>
+							<string key="NSResourceName">blue0-iPad.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="226988538">
@@ -116,7 +116,7 @@
 						<reference key="NSNextKeyView" ref="550976556"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<reference key="IBUIImage" ref="732978142"/>
+						<reference key="IBUIImage" ref="755203499"/>
 					</object>
 					<object class="IBUIImageView" id="618070168">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -126,9 +126,9 @@
 						<reference key="NSNextKeyView"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage" id="867542777">
+						<object class="NSCustomResource" key="IBUIImage" id="815655634">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">red0-iPad.PNG</string>
+							<string key="NSResourceName">red0-iPad.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="838813048">
@@ -139,7 +139,7 @@
 						<reference key="NSNextKeyView" ref="618070168"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<reference key="IBUIImage" ref="867542777"/>
+						<reference key="IBUIImage" ref="815655634"/>
 					</object>
 					<object class="IBUIImageView" id="550976556">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -151,7 +151,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">leftArrow-iPad.PNG</string>
+							<string key="NSResourceName">leftArrow-iPad.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="528324721">
@@ -368,11 +368,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="backButton-iPad.PNG">{106, 106}</string>
-			<string key="blue0-iPad.PNG">{68, 88}</string>
-			<string key="leftArrow-iPad.PNG">{97, 88}</string>
-			<string key="player1Image-iPad.PNG">{331, 108}</string>
-			<string key="red0-iPad.PNG">{68, 88}</string>
+			<string key="backButton-iPad.png">{106, 106}</string>
+			<string key="blue0-iPad.png">{68, 88}</string>
+			<string key="leftArrow-iPad.png">{97, 88}</string>
+			<string key="player1Image-iPad.png">{331, 108}</string>
+			<string key="red0-iPad.png">{68, 88}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

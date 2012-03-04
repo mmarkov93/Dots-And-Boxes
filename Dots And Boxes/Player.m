@@ -25,15 +25,15 @@
 }
 
 -(UIImage*)getPlayerHorizontalLineImage {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"%@HorizontalLine.png", color]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@HorizontalLine%@.png", color, iPadString]];
 }
 
 -(UIImage*)getPlayerBoxImage {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"%@Box.png", color]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@Box%@.png", color, iPadString]];
 }
 
 -(UIImage*)getPlayerVerticalLineImage {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"%@VerticalLine.png", color]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@VerticalLine%@.png", color, iPadString]];
 }
 
 -(void) dealloc {

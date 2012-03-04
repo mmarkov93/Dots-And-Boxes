@@ -19,6 +19,7 @@
     
     SKProduct *removeAdsProduct;
     SKProductsRequest *productsRequest;
+    NSDecimalNumber *price;
     
     NSString *localizedPrice;
 }

@@ -35,10 +35,11 @@
     gameController.game.player1 = player1;
     gameController.game.player2 = player2;
     gameController.game.currentPlayer = player1;
-    [player1 release];
-    [player2 release];
     
     [self.navigationController pushViewController:gameController animated:YES];
+    
+    [player1 release];
+    [player2 release];
     [gameController release];
 }
 

@@ -24,6 +24,7 @@
                     
                     Coordinate *verticalCord = [[Coordinate alloc] initWithRow:i Column:j AndObjectType:kVerticalLine];
                     [posibleMoves addObject:verticalCord];
+                    [verticalCord release];
                 }
             }
             
@@ -33,7 +34,7 @@
                     
                     Coordinate *horizontalCord = [[Coordinate alloc] initWithRow:i Column:j AndObjectType:kHorizontalLine];
                     [posibleMoves addObject:horizontalCord];
-                    
+                    [horizontalCord release];
                 }
             }
         }
@@ -57,7 +58,7 @@
 -(Coordinate*)makeMove {
     FieldService *fieldService = [[FieldService alloc] initWithVerticalLines:game.verticalLines HorizontalLines:game.horizontalLines AndDotsCount:game.dotsCount];
     NSArray *posibleMoves = [self getPosibleMoves];
-    [self print:posibleMoves];
+
     NSMutableArray *boxMoves = [[NSMutableArray alloc] init];
     NSMutableArray *noBoxMoves = [[NSMutableArray alloc] init];
     
@@ -72,7 +73,7 @@
             [noBoxMoves addObject:line];
         } 
     }
-    //NSLog(@"Box Moves:%d", [boxMoves count]);
+   
     if ([boxMoves count] > 0) {
         int randomBox = arc4random() % ([boxMoves count]);
         return [boxMoves objectAtIndex:randomBox];
@@ -83,7 +84,12 @@
     
     int random = arc4random() % ([posibleMoves count]);
     
-    return [posibleMoves objectAtIndex:random];
+    [fieldService release];
+    [boxMoves release];
+    [noBoxMoves release];
+
+    
+    return [[posibleMoves objectAtIndex:random] autorelease];
 }
 
 -(void) dealloc {

@@ -21,10 +21,15 @@
     
     NSTimer *computerTimer;
     
-    UIView *emptyView;
+    BOOL isUser;
+    
+    NSMutableArray *lineButtonsArray;
+    CGPoint currentTouch;
+    UIView *toMove;
     
     ADBannerView *adView;
     BOOL banerIsVisible;
+    BOOL adIsShown;
     
     UIButton *backButton;
       
@@ -46,6 +51,7 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *backButton;
 
+
 @property (nonatomic, retain) IBOutlet UIImageView *player2Image;
 @property (nonatomic, retain) IBOutlet UIImageView *p1Units;
 @property (nonatomic, retain) IBOutlet UIImageView *p1Tens;
@@ -59,5 +65,8 @@
 
 -(void)showEndGameView;
 -(void)changePlayers;
+-(BOOL)isAdsRemovePurchased;
+-(void)addImageToCurrentButton;
+-(void)removeImageFromCurrentButton;
 
 @end

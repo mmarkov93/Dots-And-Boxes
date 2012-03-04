@@ -14,6 +14,7 @@
 
 - (void)requestRemoveAdsData
 {
+    NSLog(@"request remove ads");
     NSSet *productIdentifiers = [NSSet setWithObject:kInAppPurchaseRemoveAdsProductId ];
     productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
     productsRequest.delegate = self;
@@ -27,8 +28,10 @@
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [numberFormatter setLocale:[NSLocale currentLocale]];
-    //TODO - return the price
-    
+    NSString *formatedString = [numberFormatter stringFromNumber:price];
+    [numberFormatter release];
+
+    return formatedString;
     
 }
 
@@ -37,10 +40,12 @@
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    NSLog(@"product request");
     NSArray *products = response.products;
     removeAdsProduct = [products count] == 1 ? [[products objectAtIndex:0] retain] : nil;
     if (removeAdsProduct)
     {
+        price = removeAdsProduct.price;
         NSLog(@"Product title: %@" , removeAdsProduct.localizedTitle);
         NSLog(@"Product description: %@" , removeAdsProduct.localizedDescription);
         NSLog(@"Product price: %@" , removeAdsProduct.price);
