@@ -236,6 +236,59 @@
     }
 }
 
+-(void)putImageToTheClosestTouch:(NSSet *)touches {
+    UITouch *touch = [touches anyObject];
+    CGPoint firstTouch = [touch locationInView:self.view];
+    
+    int nearestVerticalLineTag = 0;
+    int nearestHorizontalLineTag = 0;
+    
+    CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2 - 5;
+    CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2 - 5;
+    CGRect gameFieldFrame = CGRectMake(startPointX, startPointY, fieldSize + 10, fieldSize + 10);
+    
+    int minX = lineLength/2;
+    int minY = lineLength/2;
+    for (UIView *view in lineButtonsArray) {
+        LineImageView *currentButton = (LineImageView*) view;
+        if (currentButton.enabled && isUser) {
+            if (CGRectContainsPoint(view.frame, firstTouch)) {
+                
+                NSLog(@"tag:%d",view.tag);
+                toMove = view;
+                [self addImageToCurrentButton];
+                return;
+            } else if(CGRectContainsPoint(gameFieldFrame, firstTouch)){
+                
+                int x = view.frame.origin.x - firstTouch.x;
+                int y = view.frame.origin.y - firstTouch.y;
+                
+                x = abs(x);
+                y = abs(y);
+                
+                if (currentButton.coordinate.objectType == kVerticalLine && x<minX && y<lineLength) {
+                    nearestVerticalLineTag = currentButton.tag;
+                    minX = x;
+                    NSLog(@"NearestVerticalLineTag:%d", nearestVerticalLineTag);
+                } else if (currentButton.coordinate.objectType == kHorizontalLine && y<minY && x<lineLength) {
+                    nearestHorizontalLineTag = currentButton.tag;
+                    minY = y;
+                    NSLog(@"NearestHorizontalLineTag:%d",nearestHorizontalLineTag);
+                }
+                
+            }
+        }
+    }
+    
+    if (minX < minY) {
+        toMove = [self.view viewWithTag:nearestVerticalLineTag];
+    } else {
+        toMove = [self.view viewWithTag:nearestHorizontalLineTag];
+    }
+    
+    [self addImageToCurrentButton];
+}
+
 -(BOOL)isAdsRemovePurchased {
     BOOL isAdsRemovePrchased = [[NSUserDefaults standardUserDefaults] boolForKey:@"isAdsRemovePurchased"];
     if (isAdsRemovePrchased ==  NO) {
@@ -321,7 +374,11 @@
     lineButtonsArray = [[NSMutableArray alloc] init];
     if (![self isAdsRemovePurchased]) {
         adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-        adView.frame = CGRectOffset(adView.frame, 0, -50);
+        if (UI_USER_INTERFACE_IDIOM()) {
+            adView.frame = CGRectOffset(adView.frame, 0, -66);
+        } else {
+            adView.frame = CGRectOffset(adView.frame, 0, -50);
+        }
         adView.requiredContentSizeIdentifiers = [NSSet  setWithObject:ADBannerContentSizeIdentifierPortrait];
         adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
         [self.view addSubview:adView];
@@ -349,111 +406,14 @@
 #pragma mark Touch Methods
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"began");
-    UITouch *touch = [touches anyObject];
-    CGPoint firstTouch = [touch locationInView:self.view];
+    [self putImageToTheClosestTouch:touches];
     
-    int nearestVerticalLineTag = 0;
-    int nearestHorizontalLineTag = 0;
-    
-    CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2 - 5;
-    CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2 - 5;
-    CGRect gameFieldFrame = CGRectMake(startPointX, startPointY, fieldSize + 10, fieldSize + 10);
-        
-    int minX = 1000;
-    int minY = 1000;
-    for (UIView *view in lineButtonsArray) {
-        LineImageView *currentButton = (LineImageView*) view;
-        if (currentButton.enabled && isUser) {
-            if (CGRectContainsPoint(view.frame, firstTouch)) {
-                
-                NSLog(@"tag:%d",view.tag);
-                toMove = view;
-                [self addImageToCurrentButton];
-                return;
-            } else if(CGRectContainsPoint(gameFieldFrame, firstTouch)){
-                
-                int x = view.frame.origin.x - firstTouch.x;
-                int y = view.frame.origin.y - firstTouch.y;
-                
-                x = abs(x);
-                y = abs(y);
-                
-                if (currentButton.coordinate.objectType == kVerticalLine && x<minX && y<lineLength) {
-                    nearestVerticalLineTag = currentButton.tag;
-                    minX = x;
-                    NSLog(@"NearestVerticalLineTag:%d", nearestVerticalLineTag);
-                } else if (currentButton.coordinate.objectType == kHorizontalLine && y<minY && x<lineLength) {
-                    nearestHorizontalLineTag = currentButton.tag;
-                    minY = y;
-                    NSLog(@"NearestHorizontalLineTag:%d",nearestHorizontalLineTag);
-                }
-                
-            }
-        }
-    }
-    
-    if (minX < minY) {
-        toMove = [self.view viewWithTag:nearestVerticalLineTag];
-    } else {
-        toMove = [self.view viewWithTag:nearestHorizontalLineTag];
-    }
-    
-    [self addImageToCurrentButton];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [self removeImageFromCurrentButton];
     NSLog(@"moved");
-    UITouch *touch = [touches anyObject];
-    CGPoint firstTouch = [touch locationInView:self.view];
-    
-    int nearestVerticalLineTag = 0;
-    int nearestHorizontalLineTag = 0;
-    
-    CGFloat startPointX = (CGRectGetWidth(self.view.bounds) - fieldSize)/2 - 5;
-    CGFloat startPointY = (CGRectGetHeight(self.view.bounds) - fieldSize)/2 - 5;
-    CGRect gameFieldFrame = CGRectMake(startPointX, startPointY, fieldSize + 10, fieldSize + 10);
-    
-    int minX = 1000;
-    int minY = 1000;
-    for (UIView *view in lineButtonsArray) {
-        LineImageView *currentButton = (LineImageView*) view;
-        if (currentButton.enabled && isUser) {
-            if (CGRectContainsPoint(view.frame, firstTouch)) {
-                
-                NSLog(@"tag:%d",view.tag);
-                toMove = view;
-                [self addImageToCurrentButton];
-                return;
-            } else if(CGRectContainsPoint(gameFieldFrame, firstTouch)){
-                
-                int x = view.frame.origin.x - firstTouch.x;
-                int y = view.frame.origin.y - firstTouch.y;
-                
-                x = abs(x);
-                y = abs(y);
-                
-                if (currentButton.coordinate.objectType == kVerticalLine && x<minX && y<lineLength) {
-                    nearestVerticalLineTag = currentButton.tag;
-                    minX = x;
-                    NSLog(@"NearestVerticalLineTag:%d", nearestVerticalLineTag);
-                } else if (currentButton.coordinate.objectType == kHorizontalLine && y<minY && x<lineLength) {
-                    nearestHorizontalLineTag = currentButton.tag;
-                    minY = y;
-                    NSLog(@"NearestHorizontalLineTag:%d",nearestHorizontalLineTag);
-                }
-                
-            }
-        }
-    }
-    
-    if (minX < minY) {
-        toMove = [self.view viewWithTag:nearestVerticalLineTag];
-    } else {
-        toMove = [self.view viewWithTag:nearestHorizontalLineTag];
-    }
-    
-    [self addImageToCurrentButton];
+    [self putImageToTheClosestTouch:touches];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -488,10 +448,12 @@
     adIsShown = YES;
     if (!self.bannerIsVisible) {
         [UIView beginAnimations:@"animatedAdBannerOn" context:NULL];
-        banner.frame = CGRectOffset(adView.frame, 0, 50);
+
         if (UI_USER_INTERFACE_IDIOM()) {
+            banner.frame = CGRectOffset(adView.frame, 0, 66);
             backButton.frame = CGRectOffset(backButton.frame, 0, 66);
         } else {
+            banner.frame = CGRectOffset(adView.frame, 0, 50);
             backButton.frame = CGRectOffset(backButton.frame, 0, 50);
         }
         

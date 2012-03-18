@@ -207,11 +207,8 @@
 		BAB8C2F614FEA65900FAA682 /* mediumButtonSecondState@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C23514FEA65900FAA682 /* mediumButtonSecondState@2x.png */; };
 		BAB8C2F714FEA65900FAA682 /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C23614FEA65900FAA682 /* startButton.png */; };
 		BAB8C2F814FEA65900FAA682 /* startButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C23714FEA65900FAA682 /* startButton@2x.png */; };
-		BAB8C2F914FEA65900FAA682 /* Logo-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C23B14FEA65900FAA682 /* Logo-iPad.png */; };
 		BAB8C2FA14FEA65900FAA682 /* onePlayerButton-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C23D14FEA65900FAA682 /* onePlayerButton-iPad.png */; };
 		BAB8C2FB14FEA65900FAA682 /* twoPlayersButton-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C23F14FEA65900FAA682 /* twoPlayersButton-iPad.png */; };
-		BAB8C2FC14FEA65900FAA682 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C24214FEA65900FAA682 /* Logo.png */; };
-		BAB8C2FD14FEA65900FAA682 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C24314FEA65900FAA682 /* Logo@2x.png */; };
 		BAB8C2FE14FEA65900FAA682 /* onePlayerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C24514FEA65900FAA682 /* onePlayerButton.png */; };
 		BAB8C2FF14FEA65900FAA682 /* onePlayerButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C24614FEA65900FAA682 /* onePlayerButton@2x.png */; };
 		BAB8C30014FEA65900FAA682 /* twoPlayersButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BAB8C24814FEA65900FAA682 /* twoPlayersButton.png */; };
@@ -225,6 +222,9 @@
 		BAD48F931454051500931695 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F921454051500931695 /* Player.m */; };
 		BAD48F961454055400931695 /* ComputerEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F951454055400931695 /* ComputerEasy.m */; };
 		BAD48F99145405D200931695 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD48F98145405D200931695 /* Game.m */; };
+		BAD8652B1504104300382055 /* Logo-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD8652A1504104300382055 /* Logo-iPad.png */; };
+		BAD8652C1504116D00382055 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD865261504101F00382055 /* Logo@2x.png */; };
+		BAD8652D1504116D00382055 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD865271504101F00382055 /* Logo.png */; };
 		BADFECFE1452A0FC002AAF8F /* OnePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BADFECFC1452A0FC002AAF8F /* OnePlayerViewController.m */; };
 		BADFECFF1452A0FC002AAF8F /* OnePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BADFECFD1452A0FC002AAF8F /* OnePlayerViewController.xib */; };
 		BADFED041452A357002AAF8F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BADFED021452A357002AAF8F /* GameViewController.m */; };
@@ -448,11 +448,8 @@
 		BAB8C23514FEA65900FAA682 /* mediumButtonSecondState@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mediumButtonSecondState@2x.png"; sourceTree = "<group>"; };
 		BAB8C23614FEA65900FAA682 /* startButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startButton.png; sourceTree = "<group>"; };
 		BAB8C23714FEA65900FAA682 /* startButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startButton@2x.png"; sourceTree = "<group>"; };
-		BAB8C23B14FEA65900FAA682 /* Logo-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo-iPad.png"; sourceTree = "<group>"; };
 		BAB8C23D14FEA65900FAA682 /* onePlayerButton-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onePlayerButton-iPad.png"; sourceTree = "<group>"; };
 		BAB8C23F14FEA65900FAA682 /* twoPlayersButton-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twoPlayersButton-iPad.png"; sourceTree = "<group>"; };
-		BAB8C24214FEA65900FAA682 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
-		BAB8C24314FEA65900FAA682 /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
 		BAB8C24514FEA65900FAA682 /* onePlayerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onePlayerButton.png; sourceTree = "<group>"; };
 		BAB8C24614FEA65900FAA682 /* onePlayerButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onePlayerButton@2x.png"; sourceTree = "<group>"; };
 		BAB8C24814FEA65900FAA682 /* twoPlayersButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twoPlayersButton.png; sourceTree = "<group>"; };
@@ -472,6 +469,9 @@
 		BAD48F951454055400931695 /* ComputerEasy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerEasy.m; sourceTree = "<group>"; };
 		BAD48F97145405D200931695 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		BAD48F98145405D200931695 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		BAD865261504101F00382055 /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo@2x.png"; path = "../../iPad/twoPlayersButton/Logo@2x.png"; sourceTree = "<group>"; };
+		BAD865271504101F00382055 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = ../../iPad/twoPlayersButton/Logo.png; sourceTree = "<group>"; };
+		BAD8652A1504104300382055 /* Logo-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo-iPad.png"; sourceTree = "<group>"; };
 		BADFECFB1452A0FC002AAF8F /* OnePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnePlayerViewController.h; path = ../OnePlayerViewController.h; sourceTree = "<group>"; };
 		BADFECFC1452A0FC002AAF8F /* OnePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePlayerViewController.m; path = ../OnePlayerViewController.m; sourceTree = "<group>"; };
 		BADFECFD1452A0FC002AAF8F /* OnePlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnePlayerViewController.xib; path = ../OnePlayerViewController.xib; sourceTree = "<group>"; };
@@ -930,7 +930,7 @@
 		BAB8C23A14FEA65900FAA682 /* Logo */ = {
 			isa = PBXGroup;
 			children = (
-				BAB8C23B14FEA65900FAA682 /* Logo-iPad.png */,
+				BAD8652A1504104300382055 /* Logo-iPad.png */,
 			);
 			path = Logo;
 			sourceTree = "<group>";
@@ -964,8 +964,8 @@
 		BAB8C24114FEA65900FAA682 /* Logo */ = {
 			isa = PBXGroup;
 			children = (
-				BAB8C24214FEA65900FAA682 /* Logo.png */,
-				BAB8C24314FEA65900FAA682 /* Logo@2x.png */,
+				BAD865261504101F00382055 /* Logo@2x.png */,
+				BAD865271504101F00382055 /* Logo.png */,
 			);
 			path = Logo;
 			sourceTree = "<group>";
@@ -1098,6 +1098,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD8652C1504116D00382055 /* Logo@2x.png in Resources */,
+				BAD8652D1504116D00382055 /* Logo.png in Resources */,
 				BAA9AE2F144B034D0029D4A6 /* InfoPlist.strings in Resources */,
 				BAA9AE38144B034E0029D4A6 /* MainWindow.xib in Resources */,
 				BAA9AE56144B0C3C0029D4A6 /* RootViewController.xib in Resources */,
@@ -1285,11 +1287,8 @@
 				BAB8C2F614FEA65900FAA682 /* mediumButtonSecondState@2x.png in Resources */,
 				BAB8C2F714FEA65900FAA682 /* startButton.png in Resources */,
 				BAB8C2F814FEA65900FAA682 /* startButton@2x.png in Resources */,
-				BAB8C2F914FEA65900FAA682 /* Logo-iPad.png in Resources */,
 				BAB8C2FA14FEA65900FAA682 /* onePlayerButton-iPad.png in Resources */,
 				BAB8C2FB14FEA65900FAA682 /* twoPlayersButton-iPad.png in Resources */,
-				BAB8C2FC14FEA65900FAA682 /* Logo.png in Resources */,
-				BAB8C2FD14FEA65900FAA682 /* Logo@2x.png in Resources */,
 				BAB8C2FE14FEA65900FAA682 /* onePlayerButton.png in Resources */,
 				BAB8C2FF14FEA65900FAA682 /* onePlayerButton@2x.png in Resources */,
 				BAB8C30014FEA65900FAA682 /* twoPlayersButton.png in Resources */,
@@ -1297,6 +1296,7 @@
 				BAE1BC7C1503C2320071C390 /* tieImage@2x.PNG in Resources */,
 				BAE1BC7D1503C2320071C390 /* tieImage.PNG in Resources */,
 				BAE1BC7F1503C35B0071C390 /* tieImage-iPad.PNG in Resources */,
+				BAD8652B1504104300382055 /* Logo-iPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

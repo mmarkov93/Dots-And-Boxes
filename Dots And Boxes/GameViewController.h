@@ -68,5 +68,6 @@
 -(BOOL)isAdsRemovePurchased;
 -(void)addImageToCurrentButton;
 -(void)removeImageFromCurrentButton;
+-(void)putImageToTheClosestTouch:(NSSet*)touches;
 
 @end
